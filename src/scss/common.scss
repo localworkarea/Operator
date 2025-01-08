@@ -24,6 +24,118 @@ html.light body {
 	color: $gray-1C1C1C;
 }
 
+[class*="__container"] {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: toRem(15);
+    @include adaptiveValue("max-width", 1780, 1255,0,1920.98,1440.98);
+  }
+
+  .ibg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    &--top {
+      object-position: top;
+    }
+    &--bottom {
+      object-position: bottom;
+    }
+    &--left {
+      object-position: left;
+    }
+    &--right {
+      object-position: right;
+    }
+    &--contain {
+      object-fit: contain;
+    }
+  }
+  
+  // Шаблони (заготівлі)
+  // @extend %ім'я шаблону;
+  // Сніппет (SCSS): ex
+  
+  // Лічильник для списку
+  %listCounter {
+    list-style-type: none;
+    counter-reset: item;
+    li {
+      position: relative;
+      &:before {
+        counter-increment: item;
+        content: counter(item);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+  // Адаптивне відео
+  %responsiveVideo {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 56.25%;
+    video,
+    iframe,
+    object,
+    embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  // Відео як фон
+  %videoBackground {
+    video,
+    iframe,
+    object,
+    embed {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      transform: translateX(-50%) translateY(-50%);
+      background-size: cover;
+    }
+  }
+  // Сірий фільтр
+  %grayfilter {
+    transition: all 0.3s ease 0s;
+    filter: grayscale(1);
+    @media (any-hover: hover) {
+      &:hover {
+        filter: grayscale(0);
+      }
+    }
+  }
+  // Скасувати виділення
+  %noselect {
+    user-select: none;
+  }
+  // Дзеркальне відображення
+  %mirror {
+    transform: scale(-1, 1);
+  }
+  // Плавний скролл
+  %smoothscroll {
+    -webkit-overflow-scrolling: touch;
+  }
+  // Сховати скролл
+  %hidescroll {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+
 // == COLOR ================
 %colorThemeFFF-1C1C {
   .dark & {
@@ -51,6 +163,14 @@ html.light body {
     border-color: $gray-1C1C1C;
   }
 }
+%borderColor-FFF-1C1C-075 {
+  .dark & {
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+  .light & {
+    border-color: rgb(28, 28, 28, 0.75);
+  }
+}
 
 
 // == BACKGROUND COLOR =====================
@@ -62,6 +182,31 @@ html.light body {
     background-color: $gray-1C1C1C;
   }
 }
+%backgroundColor-1C1C-B8 {
+  .dark & {
+    background-color: $gray-1C1C1C;
+  }
+  .light & {
+    background-color: $light-EE;
+  }
+}
+%backgroundColor-43-B8 {
+  .dark & {
+    background-color: $gray-434343;
+  }
+  .light & {
+    background-color: $mainColor;
+  }
+}
+%backgroundColor-1C-B8-075 {
+  .dark & {
+    background-color: rgb(67, 67, 67, 0.75);
+  }
+  .light & {
+    background-color: rgb(184, 184, 184, 0.75);
+  }
+}
+
 
 %hoverUnderline {
   position: relative;
@@ -94,13 +239,15 @@ html.light body {
   transition: color .3s ease;
 }
 
-.grecaptcha-badge {
-  visibility: hidden;
+%animOpacity {
+  opacity: 0;
+  ._watcher-view & {
+    opacity: 1;
+    transition: opacity 1.3s ease;
+  } 
 }
 
-.txt-red {
-  color: $red !important;
-}
+
 
 %titleCommon {
   color: #FFF;
@@ -178,10 +325,25 @@ html.light body {
   @include adaptiveValue("font-size", 20, 14);
 }
 
+.txt-72 {
+  font-weight: 600;
+  font-family: "Benzin";
+  line-height: 1.2;
+  @include adaptiveValue("font-size", 72, 30);
+}
+
 .txt-norm {
   font-weight: 400;
   line-height: 1.2;
   @include adaptiveValue("font-size", 22, 14);
+}
+
+.txt-red {
+  color: $red !important;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }
 
 .btn {
@@ -237,19 +399,11 @@ html.light body {
 
 }
 
-// padding-section
-.pdd-tb {
-  @include adaptiveValue("padding-top", 100, 60);
-  @include adaptiveValue("padding-bottom", 100, 60);
-}
 
 .padding-section {
   @include adaptiveValue("padding-top", 100, 60);
   @include adaptiveValue("padding-bottom", 100, 60);
 }
-
-
-
 
 
 .split-lines,
@@ -259,20 +413,36 @@ html.light body {
   font-kerning: none;
 }
 
-
-.element {
-  .line {
-    overflow: hidden;
-  }
-  .word {
-    transform: translateY(100%);
-    transition: transform .55s cubic-bezier(.22,.89,.34,.96);
-  }
-  &._watcher-view {
+%animWatcherSplitSpan {
+  &.split-words {
     .word {
-      transform: translateY(0);
-      transition-delay: calc(var(--index) * .03s);
+      overflow: hidden;
+    }
+    .word-span {
+      display: inline-block;
+      transform: translateY(100%);
+      transition: transform 1s cubic-bezier(.22,.89,.34,.96);
+      ._watcher-view & {
+        transform: translateY(0);
+        transition-delay: calc(0.15s + var(--index) * .03s);
+      }
     }
   }
 }
+
+// .element {
+//   .line {
+//     overflow: hidden;
+//   }
+//   .word {
+//     transform: translateY(100%);
+//     transition: transform .55s cubic-bezier(.22,.89,.34,.96);
+//   }
+//   &._watcher-view {
+//     .word {
+//       transform: translateY(0);
+//       transition-delay: calc(var(--index) * .03s);
+//     }
+//   }
+// }
 

@@ -32,7 +32,7 @@ function initSliders() {
 			observer: true,
 			observeParents: true,
 			slidesPerView: "auto",
-			speed: 800,
+			speed: 500,
 
 			breakpoints: {
 				300: {
@@ -59,11 +59,14 @@ function initSliders() {
 			breakpoints: {
 				300: {
 					spaceBetween: 10,
-					slidesPerView: 1,
+					slidesPerView: 1.05,
 				},
 				480: {
-					spaceBetween: 20,
 					slidesPerView: 2,
+					spaceBetween: 10,
+				},
+				1200: {
+					spaceBetween: 20,
 				},
 			},
 			// Події

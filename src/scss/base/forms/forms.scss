@@ -12,12 +12,14 @@ textarea {
 	width: 100%;
 	display: block;
 	outline: none;
-	padding: 10px 20px 10px 45px;
-
+	
 	@include adaptiveValue("font-size", 22, 16);
   font-weight: 500;
   line-height: 1.2;
-
+	
+	@media (min-width:$mobileSmall){
+		padding: 10px 20px 10px 45px;
+	}
 	@media (max-width:$mobileSmall){
 		padding: 5px 20px 5px 20px;
 	}
@@ -62,9 +64,11 @@ textarea.input {
 		.form__error {
 			color: $red;
 			position: absolute;
-			top: toRem(3px);
 			right: toRem(100);
 			font-weight: 500;
+			@media (min-width:$mobileSmall){
+				top: toRem(3px);
+			}
 			@media (max-width:$mobileSmall){
 				 top: 2px; 
 				 font-size: toRem(13);
@@ -72,16 +76,15 @@ textarea.input {
 		}
 		// .form__block_mail
 		&_mail {
-			padding: toRem(10);
 			border-radius: toRem(50);
 			background-color: #FEFDFE;
-			
-
 			border: toRem(1) solid transparent;
 			&._form-error {
 				border: toRem(1) solid $red;
 			}
-
+			@media (min-width:$mobileSmall){
+				padding: toRem(10);
+			}
 			@media (max-width:$mobileSmall){
 				 padding: toRem(5); 
 			}
@@ -89,9 +92,11 @@ textarea.input {
 		// .form__block_phone
 		&_phone {
 			overflow: unset;
-			padding-top: toRem(10);
-			padding-bottom: toRem(10);
 			border-bottom: toRem(2) solid white;
+			@media (min-width:$mobileSmall){
+				padding-top: toRem(10);
+				padding-bottom: toRem(10);
+			}
 			@media (max-width:$mobileSmall){
 				padding-top: toRem(5);
 				 padding-bottom: toRem(5); 
@@ -103,8 +108,9 @@ textarea.input {
 
 			.form__error {
 				top: -5px;
-				right: toRem(40) ;
-				
+				@media (min-width:$mobileSmall){
+					right: toRem(40) ;
+				}
 				@media (max-width:$mobileSmall){
 					 right: 20px; 
 				}
@@ -116,23 +122,27 @@ textarea.input {
 
 		&_email {
 			flex: 0 0 auto;
-			width: toRem(71);
-			height: toRem(71);
 			border-radius: 50%;
 			background-color: $red;
-
+			
 			display: flex;
 			align-items: center;
 			justify-content: center;
-
+			
 			transition: all .3s ease;
+			@media (min-width:$mobileSmall){
+				width: toRem(71);
+				height: toRem(71);
+			}
 			@media (max-width:$mobileSmall){
 				width: toRem(45);
 				height: toRem(45);
 			}
 			img {
-				width: toRem(23);
 				height: auto;
+				@media (min-width:$mobileSmall){
+					width: toRem(23);
+				}
 				@media (max-width:$mobileSmall){
 					 width: toRem(18); 
 				}
@@ -145,8 +155,10 @@ textarea.input {
 		}
 		&_phone {
 			img {
-				width: toRem(23);
 				height: auto;
+				@media (min-width:$mobileSmall){
+					width: toRem(23);
+				}
 				@media (max-width:$mobileSmall){
 					 width: toRem(18); 
 				}
@@ -169,4 +181,4 @@ textarea.input {
 }
 
 
-@import "select";
+// @import "select";

@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function() {
           end: "top center",
           scrub: 1,
         },
-        // duration: 1,
+        duration: 1,
         backgroundSize: "100% 100%",
         ease: "none",
       });
@@ -203,6 +203,69 @@ document.addEventListener("DOMContentLoaded", function() {
   // =========================================
   
 
+  // == SPOLLERS INDEX ========================================
+  const spollers = document.querySelectorAll('.spollers');
+  spollers.forEach((spoller) => {
+
+    const wrapperSpollers = spoller.querySelectorAll('.wrapper-spoller');
+    const wrapperSpollerFaqs = spoller.querySelectorAll('.wrapper-spoller-faq');
+
+    if (wrapperSpollers.length) {
+      wrapperSpollers.forEach((wrapper, index) => {
+        wrapper.style.setProperty('--index', index);
+      });
+    } 
+
+    if (wrapperSpollerFaqs.length){
+      wrapperSpollerFaqs.forEach((wrapper, index) => {
+        wrapper.style.setProperty('--index', index);
+      });
+    }
+  });
+  // =========================================
+
+
+  // == SELECT (PRICE SECTION) ========================
+  const selectOptions = document.querySelector('.select__options');
+  
+  if (selectOptions) {
+    const priceValues = document.querySelectorAll('.price__value');
+    const priceTxtChngOnes = document.querySelectorAll('.price__txt-chng-one');
+
+    let selectedIndex = -1;
+  
+    function handleHiddenAttributeChange(mutationsList) {
+      const isHidden = selectOptions.hasAttribute('hidden');
+      
+      if (isHidden) {
+        const newSelectedIndex = Array.from(selectOptions.querySelectorAll('.select__option')).findIndex(option => option.getAttribute('hidden') !== null);
+        
+        // Если индекс опции валидный и не совпадает с предыдущим, удалить классы _show-price и _show-txt со всех элементов
+        if (newSelectedIndex >= 0 && newSelectedIndex !== selectedIndex) {
+          priceValues.forEach(priceValue => {
+            priceValue.classList.remove('_show-price');
+          });
+  
+          priceTxtChngOnes.forEach(priceTxtChngOne => {
+            priceTxtChngOne.classList.remove('_show-txt');
+          });
+  
+          // Присвоить новому .price__value класс _show-price и новому .price__txt-chng-one класс _show-txt
+          priceValues[newSelectedIndex].classList.add('_show-price');
+          priceTxtChngOnes[newSelectedIndex].classList.add('_show-txt');
+  
+          selectedIndex = newSelectedIndex;
+        }
+      }
+    }
+  
+    const observer = new MutationObserver(handleHiddenAttributeChange);
+    observer.observe(selectOptions, { attributes: true });
+  
+    handleHiddenAttributeChange();
+  }
+
+  // ============================================
 
 
   let lastWidth = window.innerWidth;

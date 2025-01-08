@@ -26,13 +26,17 @@
     display: flex;
     align-items: center;
     @include adaptiveValue("column-gap", 120, 50,0,1920.98,1200.98);
+    @media (max-width:$mobileSmall){
+       column-gap: toRem(30) !important; 
+    }
   }
   // .header__logo
   &__logo {
+    flex: 0 0 auto;
     position: relative;
     z-index: 5;
     display: block;
-    @include adaptiveValue("max-width", 207,120);
+    @include adaptiveValue("width", 207,130,0,1920.98,1440.98);
     img {
       width: 100%;
       height: auto;
@@ -164,11 +168,11 @@
     font-weight: 500;
     text-transform: uppercase;
     display: flex;
+    @include adaptiveValue("font-size", 18,15,2,1920.98,1300.98 );
     @media (min-width:toEm(1300.98)){
       gap: toRem(5) toRem(22);
       align-items:center;
       flex-wrap: wrap;
-      font-size: toRem(18);
     }
     @media (max-width: toEm(1300.98)){
       font-size: toRem(22);    
@@ -259,9 +263,9 @@
   font-weight: 500;
   border: toRem(1) solid #fff;
   transition: color .3s ease, border .3s ease;
-  @include adaptiveValue("padding-block", 10,6);
-  @include adaptiveValue("padding-inline", 20,15);
-  @include adaptiveValue("font-size", 18, 16);
+  padding-block: toRem(10);
+  padding-inline: toRem(20);
+  @include adaptiveValue("font-size", 18, 16,0,1920.98,1440.98);
   @extend %borderColor-FFF-1C1C;
   @media (any-hover: hover){
     &:hover{
@@ -276,11 +280,9 @@
 .sub-menu {
   // .sub-menu__list
   &__list {
-    
     display: flex;
     flex-direction: column;
     gap: toRem(10);
-    
     @media (min-width:toEm(1300.98)){
       position: absolute;
       top: toRem(10);
