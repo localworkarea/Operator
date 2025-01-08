@@ -1,0 +1,172 @@
+//<INPUT>
+// Сніппет (HTML): inp
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.input {
+	width: 100%;
+	display: block;
+	outline: none;
+	padding: 10px 20px 10px 45px;
+
+	@include adaptiveValue("font-size", 22, 16);
+  font-weight: 500;
+  line-height: 1.2;
+
+	@media (max-width:$mobileSmall){
+		padding: 5px 20px 5px 20px;
+	}
+
+	&._form-focus {
+	}
+	&._form-error {
+	}
+}
+.input[placeholder]:not([data-placeholder-nohiden]) {
+	&::placeholder {
+		transition: opacity 0.3s;
+
+		color: #ACB1C6;
+		@include adaptiveValue("font-size", 18, 14);
+		font-weight: 400;
+		line-height: normal;
+		.light & {
+			color: rgb(28, 28, 28, 0.5);
+		}
+	}
+	&:focus::placeholder {
+		opacity: 0;
+	}
+}
+
+textarea.input {
+	resize: none;
+	padding: 0px 0px;
+}
+
+.form {
+	// .form__block
+	&__block {
+		position: relative;
+		overflow: hidden;
+		transition: all .3s ease;
+
+		display: flex;
+		gap: toRem(20);
+	
+		.form__error {
+			color: $red;
+			position: absolute;
+			top: toRem(3px);
+			right: toRem(100);
+			font-weight: 500;
+			@media (max-width:$mobileSmall){
+				 top: 2px; 
+				 font-size: toRem(13);
+			}
+		}
+		// .form__block_mail
+		&_mail {
+			padding: toRem(10);
+			border-radius: toRem(50);
+			background-color: #FEFDFE;
+			
+
+			border: toRem(1) solid transparent;
+			&._form-error {
+				border: toRem(1) solid $red;
+			}
+
+			@media (max-width:$mobileSmall){
+				 padding: toRem(5); 
+			}
+		}
+		// .form__block_phone
+		&_phone {
+			overflow: unset;
+			padding-top: toRem(10);
+			padding-bottom: toRem(10);
+			border-bottom: toRem(2) solid white;
+			@media (max-width:$mobileSmall){
+				padding-top: toRem(5);
+				 padding-bottom: toRem(5); 
+			}
+
+			&._form-error {
+				border-color: $red;
+			}
+
+			.form__error {
+				top: -5px;
+				right: toRem(40) ;
+				
+				@media (max-width:$mobileSmall){
+					 right: 20px; 
+				}
+			}
+		}
+	}
+	// .form__button
+	&__button {
+
+		&_email {
+			flex: 0 0 auto;
+			width: toRem(71);
+			height: toRem(71);
+			border-radius: 50%;
+			background-color: $red;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			transition: all .3s ease;
+			@media (max-width:$mobileSmall){
+				width: toRem(45);
+				height: toRem(45);
+			}
+			img {
+				width: toRem(23);
+				height: auto;
+				@media (max-width:$mobileSmall){
+					 width: toRem(18); 
+				}
+			}
+			@media (any-hover: hover){
+				&:hover{
+					opacity: .8;
+				}
+			}
+		}
+		&_phone {
+			img {
+				width: toRem(23);
+				height: auto;
+				@media (max-width:$mobileSmall){
+					 width: toRem(18); 
+				}
+				filter: invert(100%) sepia(34%) saturate(0%) hue-rotate(142deg) brightness(109%) contrast(101%);
+			}
+		}
+	}
+}
+
+.input {
+	// .input__email
+	&__email {
+	}
+	// .input__phone
+	&__phone {
+		background-color: transparent;
+		// color: white;
+		@extend %colorThemeFFF-1C1C;
+	}
+}
+
+
+@import "select";

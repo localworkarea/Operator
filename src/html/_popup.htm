@@ -1,0 +1,77 @@
+<div id="popupOne"  class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close" aria-label="кнопка закриття">
+				<img src="@img/icons/close.svg" width="42" height="42" alt="close">
+			</button>
+			<p class="popup__title">послуги <span>колл-центру</span> в україні</p>
+			<p class="popup__txt">Залиште свій E-mail і наш менеджер зв’яжеться з вами протягом 15 хвилин!</p>
+			<form id="getConsul" name="Consultanion" data-dev data-popup-message="#popupMessage" action="" method="POST">
+				<div class="form__block form__block_mail">
+					<input type="text" name="form[email]" data-required="email" data-validate data-error="Заповніть поле" placeholder="E-mail" class="input input__email">
+					<!-- <input type="hidden" id="recaptcha-resp1" name="g-recaptcha-response"> -->
+					<button type="submit" class="form__button form__button_email">
+						<img src="@img/icons/arrow.svg" width="23" height="16" alt="arrow">
+					</button>
+				</div>
+			</form>
+			<img class="popup__bg" src="@img/icons/logo-big.png" width="500" height="500" alt="logo">
+		</div>
+	</div>
+</div>
+
+<div id="popupTwo"  class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close" aria-label="кнопка закриття">
+				<img src="@img/icons/close.svg" width="42" height="42" alt="close">
+			</button>
+			<p class="popup__title">залишилися <span>питання</span>?</p>
+			<p class="popup__txt">Залиште свій E-mail і наш менеджер зв’яжеться з вами протягом 15 хвилин!</p>
+			<form id="isQuestions" name="Questions" data-dev data-popup-message="#popupMessage" action="" method="POST">
+				<div class="form__block form__block_mail">
+					<input type="text" name="form[email]" data-required="email" data-validate data-error="Заповніть поле" placeholder="E-mail" class="input input__email">
+					<!-- <input type="hidden" id="recaptcha-resp2" name="g-recaptcha-response"> -->
+					<button type="submit" class="form__button form__button_email">
+						<img src="@img/icons/arrow.svg" width="23" height="16" alt="arrow">
+					</button>
+				</div>
+			</form>
+			<img class="popup__bg" src="@img/icons/logo-big.png" width="500" height="500" alt="logo">
+		</div>
+	</div>
+</div>
+
+<div id="popupThree"  class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close" aria-label="кнопка закриття">
+				<img src="@img/icons/close.svg" width="42" height="42" alt="close">
+			</button>
+			<p class="popup__title">залишилися <span>питання</span>?</p>
+			<p class="popup__txt">Залиште свій номер телефону і наш менеджер зв’яжеться з вами протягом 15 хвилин!</p>
+			<form id="getConsulTwo" name="Consultanion" data-dev data-popup-message="#popupMessage" action="" method="POST">
+				<div class="form__block form__block_phone">
+					<input type="tel" name="tel" data-inputmask="'mask': '+38 (099) 999 99 99'" name="form[phone]" data-validate data-required data-error="Заповніть поле" placeholder="Номер телефону" class="input input__phone">
+					<!-- <input type="hidden" id="recaptcha-resp3" name="g-recaptcha-response"> -->
+					<button type="submit" class="form__button form__button_phone">
+						<img src="@img/icons/arrow.svg" width="23" height="16" alt="arrow">
+					</button>
+				</div>
+			</form>
+			<img class="popup__bg" src="@img/icons/logo-big.png" width="500" height="500" alt="logo">
+		</div>
+	</div>
+</div>
+
+<div id="popupMessage"  class="popup popup-close">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close" aria-label="кнопка закриття">
+				<img src="@img/icons/close.svg" width="42" height="42" alt="close">
+			</button>
+			<p class="popup__title">дякуємо за <span>звернення</span>!</p>
+			<p class="popup__txt">Наш менеджер звяжеться з вами в найкоротший термін.</p>
+		</div>
+	</div>
+</div>
