@@ -184,22 +184,32 @@ document.addEventListener("DOMContentLoaded", function() {
   
 
   // == ANIMATION TITLE ==========================================================
-  const titleElements = document.querySelectorAll(".title-second__wrapper");
-  if (titleElements.length > 0) {
-    titleElements.forEach((titleElement) => {
-      gsap.to(titleElement, {
-        scrollTrigger: {
-          trigger: titleElement,
-          start: "bottom bottom",
-          end: "top center",
-          scrub: 1,
-        },
-        duration: 1,
-        backgroundSize: "100% 100%",
-        ease: "none",
-      });
-    });
-  }
+
+  // == ПЕРЕНЕС В FUNCTION.JS 
+
+
+  // function titleAnimation() {
+  //   ScrollTrigger.refresh();
+  //   const titleElements = document.querySelectorAll(".title-second__wrapper");
+
+  //   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  //   if (titleElements.length > 0) {
+  //     titleElements.forEach((titleElement) => {
+  //       gsap.to(titleElement, {
+  //         scrollTrigger: {
+  //           trigger: titleElement,
+  //           start: "90% bottom",
+  //           end: "top center",
+  //           scrub: 1,
+  //         },
+  //         duration: 1,
+  //         backgroundSize: "100% 100%",
+  //         ease: "none",
+  //       });
+  //     });
+  //   }
+  // }
+  // titleAnimation();
   // =========================================
   
 
@@ -275,6 +285,7 @@ document.addEventListener("DOMContentLoaded", function() {
               const currentWidth = entry.contentRect.width;
               if (currentWidth !== lastWidth) {
                   initSplitType();
+                  // titleAnimation();
                   lastWidth = currentWidth; 
               }
           });

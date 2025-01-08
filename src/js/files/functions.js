@@ -177,6 +177,30 @@ export let bodyLock = (delay = 500) => {
 	}
 }
 // Модуль роботи зі спойлерами =======================================================================================================================================================================================================================
+
+// == кастомный код для заголовков ========================
+export function titleAnimation() {
+	ScrollTrigger.refresh();
+	ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+	const titleElements = document.querySelectorAll(".title-second__wrapper");
+
+	if (titleElements.length > 0) {
+		titleElements.forEach((titleElement) => {
+			gsap.to(titleElement, {
+				scrollTrigger: {
+					trigger: titleElement,
+					start: "90% bottom",
+					end: "top center",
+					scrub: 1,
+				},
+				duration: 1,
+				backgroundSize: "100% 100%",
+				ease: "none",
+			});
+		});
+	}
+}
+
 export function spollers() {
 	const spollersArray = document.querySelectorAll('[data-spollers]');
 	if (spollersArray.length > 0) {
@@ -259,6 +283,10 @@ export function spollers() {
 
 						spollerTitle.classList.toggle('_spoller-active');
 						_slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
+
+						setTimeout(() => {
+							titleAnimation();
+						}, 1000);
 
 						if (scrollSpoller && spollerTitle.classList.contains('_spoller-active')) {
 							const scrollSpollerValue = spollerBlock.dataset.spollerScroll;

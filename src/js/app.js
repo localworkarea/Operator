@@ -37,6 +37,7 @@ flsFunctions.addTouchClass();
 flsFunctions.addLoadedClass();
 /* Модуль для роботи з меню (Бургер) */
 flsFunctions.menuInit();
+flsFunctions.titleAnimation();
 /* Форматування чисел */
 // import './libs/wNumb.min.js';
 

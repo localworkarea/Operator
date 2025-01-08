@@ -3914,6 +3914,24 @@
                 }), delay);
             }
         };
+        function titleAnimation() {
+            ScrollTrigger.refresh();
+            ScrollTrigger.getAll().forEach((trigger => trigger.kill()));
+            const titleElements = document.querySelectorAll(".title-second__wrapper");
+            if (titleElements.length > 0) titleElements.forEach((titleElement => {
+                gsap.to(titleElement, {
+                    scrollTrigger: {
+                        trigger: titleElement,
+                        start: "90% bottom",
+                        end: "top center",
+                        scrub: 1
+                    },
+                    duration: 1,
+                    backgroundSize: "100% 100%",
+                    ease: "none"
+                });
+            }));
+        }
         function spollers() {
             const spollersArray = document.querySelectorAll("[data-spollers]");
             if (spollersArray.length > 0) {
@@ -3980,6 +3998,9 @@
                                 }), spollerSpeed);
                                 spollerTitle.classList.toggle("_spoller-active");
                                 _slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
+                                setTimeout((() => {
+                                    titleAnimation();
+                                }), 1e3);
                                 if (scrollSpoller && spollerTitle.classList.contains("_spoller-active")) {
                                     const scrollSpollerValue = spollerBlock.dataset.spollerScroll;
                                     const scrollSpollerOffset = +scrollSpollerValue ? +scrollSpollerValue : 0;
@@ -9039,20 +9060,6 @@
             };
             menuLogic();
             mediaQueryHeader.addEventListener("change", menuLogic);
-            const titleElements = document.querySelectorAll(".title-second__wrapper");
-            if (titleElements.length > 0) titleElements.forEach((titleElement => {
-                gsap.to(titleElement, {
-                    scrollTrigger: {
-                        trigger: titleElement,
-                        start: "bottom bottom",
-                        end: "top center",
-                        scrub: 1
-                    },
-                    duration: 1,
-                    backgroundSize: "100% 100%",
-                    ease: "none"
-                });
-            }));
             const spollers = document.querySelectorAll(".spollers");
             spollers.forEach((spoller => {
                 const wrapperSpollers = spoller.querySelectorAll(".wrapper-spoller");
@@ -9110,6 +9117,7 @@
         addTouchClass();
         addLoadedClass();
         menuInit();
+        titleAnimation();
         spollers();
         formFieldsInit({
             viewPass: false,
