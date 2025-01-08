@@ -7,6 +7,7 @@
 		<div class="wrapper">
 			@@include('html/_header.htm',{})
 			<main class="page">
+				<!-- Hero новая секция -->
 				<section class="hero">
 					<div class="hero__container">
 						<h1 class="hero__title title-hero split-words set-span">
@@ -64,6 +65,7 @@
 						Изменения в img - используется webp без picture 
 						добавлены атрибуты width height к img
 						добавлены aria-label к <a> <button>
+						добавлены новые классы split-words set-span;
 				-->
 				<section data-watch-threshold="0.5" data-watch data-watch-once class="about padding-section">
 					<div class="about__container">
@@ -342,7 +344,7 @@
 					</div>
 				</section>
 
-				<!-- Кейсы новая секция -->
+				<!-- CASES новая секция -->
 				<section class="cases padding-section">
 					<div class="cases__container">
 						<h2 class="cases__title-main title-second">
@@ -570,7 +572,6 @@
 					</div>
 				</section>
 
-				<!-- ИЗМЕНЕНИЯ: добавлены новые классы split-words set-span; svg circles вместо span -->
 				<section data-watch-threshold="0.2" data-watch data-watch-once class="cooperation padding-section">
 					<div class="cooperation__container">
 						<h2 class="cooperation__title-main title-second">
@@ -585,6 +586,7 @@
 								<ul data-watch-threshold="0.3" data-watch data-watch-once class="cooperation__list">
 									<li class="cooperation__item">
 										<div class="cooperation__cube">
+											<!-- ИЗМЕНЕНИЯ:  svg circles вместо span -->
 											<img src="@img/icons/circles-1.svg" width="38" height="36" alt="Image">
 										</div>
 										<div class="cooperation__title-wrap">

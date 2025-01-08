@@ -353,6 +353,7 @@
   }
   // .spollers__close
   &__close {
+    flex: 0 0 auto;
     width: toRem(23);
     height: toRem(23);
     img {
