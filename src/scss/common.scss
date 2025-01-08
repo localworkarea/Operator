@@ -295,7 +295,7 @@ html.light body {
     -webkit-background-clip: text;
     background-repeat: no-repeat;
     background-size: 0% 100%;
-    transition: background-size 0.2s linear;
+    transition: background-size 1s  cubic-bezier(.2,1.11,.39,1.01) 0s;
     background-attachment: scroll; 
 
     .dark & {

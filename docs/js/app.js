@@ -3914,24 +3914,6 @@
                 }), delay);
             }
         };
-        function titleAnimation() {
-            ScrollTrigger.refresh();
-            ScrollTrigger.getAll().forEach((trigger => trigger.kill()));
-            const titleElements = document.querySelectorAll(".title-second__wrapper");
-            if (titleElements.length > 0) titleElements.forEach((titleElement => {
-                gsap.to(titleElement, {
-                    scrollTrigger: {
-                        trigger: titleElement,
-                        start: "90% bottom",
-                        end: "top center",
-                        scrub: 1
-                    },
-                    duration: 1,
-                    backgroundSize: "100% 100%",
-                    ease: "none"
-                });
-            }));
-        }
         function spollers() {
             const spollersArray = document.querySelectorAll("[data-spollers]");
             if (spollersArray.length > 0) {
@@ -3998,9 +3980,6 @@
                                 }), spollerSpeed);
                                 spollerTitle.classList.toggle("_spoller-active");
                                 _slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
-                                setTimeout((() => {
-                                    titleAnimation();
-                                }), 1e3);
                                 if (scrollSpoller && spollerTitle.classList.contains("_spoller-active")) {
                                     const scrollSpollerValue = spollerBlock.dataset.spollerScroll;
                                     const scrollSpollerOffset = +scrollSpollerValue ? +scrollSpollerValue : 0;
@@ -8982,7 +8961,6 @@
                 saveTheme ? localStorage.setItem("user-theme", newTheme) : null;
             }
         }
-        gsap.registerPlugin(ScrollTrigger);
         document.addEventListener("DOMContentLoaded", (function() {
             const splitTextLines = document.querySelectorAll(".split-lines");
             const splitTextWords = document.querySelectorAll(".split-words");
@@ -9060,6 +9038,53 @@
             };
             menuLogic();
             mediaQueryHeader.addEventListener("change", menuLogic);
+            const titleElements = document.querySelectorAll(".title-second__wrapper");
+            if (titleElements.length > 0) {
+                function calculateProgress(rect) {
+                    const viewportHeight = window.innerHeight;
+                    const centerY = viewportHeight / 2;
+                    const progress = (viewportHeight - rect.bottom) / centerY * 100;
+                    return Math.max(0, Math.min(100, progress));
+                }
+                function updateBackgroundSize(el, progress) {
+                    el.style.backgroundSize = `${progress}% 100%`;
+                }
+                function checkInitialPosition(el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.bottom < 0) updateBackgroundSize(el, 100); else if (rect.top < window.innerHeight) {
+                        const progress = calculateProgress(rect);
+                        updateBackgroundSize(el, progress);
+                    } else updateBackgroundSize(el, 0);
+                }
+                function handleIntersection(entries) {
+                    entries.forEach((entry => {
+                        const el = entry.target;
+                        if (entry.isIntersecting) {
+                            const rect = el.getBoundingClientRect();
+                            const progress = calculateProgress(rect);
+                            updateBackgroundSize(el, progress);
+                        }
+                    }));
+                }
+                function handleScroll() {
+                    titleElements.forEach((el => {
+                        const rect = el.getBoundingClientRect();
+                        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                            const progress = calculateProgress(rect);
+                            updateBackgroundSize(el, progress);
+                        }
+                    }));
+                }
+                const observer = new IntersectionObserver(handleIntersection, {
+                    root: null,
+                    threshold: 0
+                });
+                titleElements.forEach((el => {
+                    observer.observe(el);
+                    checkInitialPosition(el);
+                }));
+                window.addEventListener("scroll", handleScroll);
+            }
             const spollers = document.querySelectorAll(".spollers");
             spollers.forEach((spoller => {
                 const wrapperSpollers = spoller.querySelectorAll(".wrapper-spoller");
@@ -9117,7 +9142,6 @@
         addTouchClass();
         addLoadedClass();
         menuInit();
-        titleAnimation();
         spollers();
         formFieldsInit({
             viewPass: false,

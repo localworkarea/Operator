@@ -67,7 +67,7 @@ function windowLoad() {
 }
 // ========================================================================
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function() {
   
@@ -211,6 +211,92 @@ document.addEventListener("DOMContentLoaded", function() {
   // }
   // titleAnimation();
   // =========================================
+
+
+
+  const titleElements = document.querySelectorAll(".title-second__wrapper");
+  if (titleElements.length > 0) {
+    // Функция для вычисления прогресса
+    function calculateProgress(rect) {
+      const viewportHeight = window.innerHeight;
+      const centerY = viewportHeight / 2;
+    
+      // Рассчитываем прогресс от нижней границы экрана до центра экрана
+      const progress = ((viewportHeight - rect.bottom) / (centerY)) * 100;
+    
+      return Math.max(0, Math.min(100, progress)); // Ограничиваем прогресс от 0 до 100
+    }
+    
+    // Обновляем `backgroundSize` на основе прогресса
+    function updateBackgroundSize(el, progress) {
+      el.style.backgroundSize = `${progress}% 100%`;
+    }
+    
+    // Проверка положения элемента при загрузке страницы
+    function checkInitialPosition(el) {
+      const rect = el.getBoundingClientRect();
+    
+      // Если элемент выше верхнего края вьюпорта, устанавливаем progress = 100%
+      if (rect.bottom < 0) {
+        updateBackgroundSize(el, 100);
+      } else if (rect.top < window.innerHeight) {
+        // Если элемент частично или полностью в вьюпорте, вычисляем начальный прогресс
+        const progress = calculateProgress(rect);
+        updateBackgroundSize(el, progress);
+      } else {
+        // Если элемент ниже вьюпорта, устанавливаем progress = 0%
+        updateBackgroundSize(el, 0);
+      }
+    }
+    
+    // Обработчик IntersectionObserver
+    function handleIntersection(entries) {
+      entries.forEach((entry) => {
+        const el = entry.target;
+      
+        if (entry.isIntersecting) {
+          // Если элемент виден, вычисляем прогресс
+          const rect = el.getBoundingClientRect();
+          const progress = calculateProgress(rect);
+        
+          updateBackgroundSize(el, progress);
+        }
+      });
+    }
+    
+    // Обновление прогресса для всех видимых элементов при скролле
+    function handleScroll() {
+      titleElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+      
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+          // Элемент частично виден, обновляем прогресс
+          const progress = calculateProgress(rect);
+          updateBackgroundSize(el, progress);
+        }
+      });
+    }
+    
+    // Инициализация IntersectionObserver
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null, // Отслеживаем относительно вьюпорта
+      threshold: 0, // Срабатывает при любом пересечении
+    });
+    
+    // Подключаем элементы к обзерверу
+    titleElements.forEach((el) => {
+      observer.observe(el);
+    
+      // Проверяем позицию элемента при загрузке
+      checkInitialPosition(el);
+    });
+    
+    // Обновляем прогресс при скролле
+    window.addEventListener("scroll", handleScroll);
+  }
+
+  
+
   
 
   // == SPOLLERS INDEX ========================================
