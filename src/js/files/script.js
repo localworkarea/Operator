@@ -305,6 +305,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const wrapperSpollers = spoller.querySelectorAll('.wrapper-spoller');
     const wrapperSpollerFaqs = spoller.querySelectorAll('.wrapper-spoller-faq');
+    const listsItem = spoller.querySelectorAll('.lists__item');
 
     if (wrapperSpollers.length) {
       wrapperSpollers.forEach((wrapper, index) => {
@@ -314,6 +315,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (wrapperSpollerFaqs.length){
       wrapperSpollerFaqs.forEach((wrapper, index) => {
+        wrapper.style.setProperty('--index', index);
+      });
+    }
+    if (listsItem.length){
+      listsItem.forEach((wrapper, index) => {
         wrapper.style.setProperty('--index', index);
       });
     }

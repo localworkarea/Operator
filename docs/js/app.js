@@ -8083,6 +8083,63 @@
                 },
                 on: {}
             });
+            if (document.querySelector(".cards-a__slider")) new Swiper(".cards-a__slider", {
+                modules: [ Navigation ],
+                observer: true,
+                observeParents: true,
+                speed: 500,
+                breakpoints: {
+                    300: {
+                        spaceBetween: 10,
+                        slidesPerView: 1.05
+                    },
+                    480: {
+                        spaceBetween: 10,
+                        slidesPerView: 2
+                    },
+                    600: {
+                        spaceBetween: 10,
+                        slidesPerView: 3.05
+                    },
+                    992: {
+                        slidesPerView: 4,
+                        spaceBetween: 18
+                    }
+                },
+                on: {}
+            });
+            if (document.querySelector(".cards-b__slider")) new Swiper(".cards-b__slider", {
+                modules: [ Navigation ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: "auto",
+                speed: 500,
+                breakpoints: {
+                    300: {
+                        spaceBetween: 10
+                    },
+                    768: {
+                        spaceBetween: 20
+                    }
+                },
+                on: {}
+            });
+            if (document.querySelector(".more-servs__slider")) new Swiper(".more-servs__slider", {
+                modules: [ Navigation ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: "auto",
+                speed: 500,
+                breakpoints: {
+                    300: {
+                        spaceBetween: 10
+                    },
+                    768: {
+                        spaceBetween: 20
+                    }
+                },
+                on: {}
+            });
         }
         window.addEventListener("load", (function(e) {
             initSliders();
@@ -9089,10 +9146,14 @@
             spollers.forEach((spoller => {
                 const wrapperSpollers = spoller.querySelectorAll(".wrapper-spoller");
                 const wrapperSpollerFaqs = spoller.querySelectorAll(".wrapper-spoller-faq");
+                const listsItem = spoller.querySelectorAll(".lists__item");
                 if (wrapperSpollers.length) wrapperSpollers.forEach(((wrapper, index) => {
                     wrapper.style.setProperty("--index", index);
                 }));
                 if (wrapperSpollerFaqs.length) wrapperSpollerFaqs.forEach(((wrapper, index) => {
+                    wrapper.style.setProperty("--index", index);
+                }));
+                if (listsItem.length) listsItem.forEach(((wrapper, index) => {
                     wrapper.style.setProperty("--index", index);
                 }));
             }));

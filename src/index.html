@@ -8,7 +8,7 @@
 			@@include('html/_header.htm',{})
 			<main class="page">
 				<!-- Hero новая секция -->
-				<section class="hero">
+				<section class="hero hero-sects">
 					<div class="hero__container">
 						<h1 class="hero__title title-hero split-words set-span">
 							Довірте спілкування <span class="clr-red">з клієнтами</span> професіоналам
@@ -17,35 +17,35 @@
 							<div class="hero__slider swiper">
 								<div class="hero__wrapper swiper-wrapper">
 									<div class="hero__slide swiper-slide">
-										<a href="#" class="slide-hero" aria-label="лінк до сторінки">
+										<a href="api.html" class="slide-hero" aria-label="лінк до сторінки">
 											<p class="slide-hero__txt">
 												Дзвінки по API
 											</p>
 										</a>
 									</div>
 									<div class="hero__slide swiper-slide">
-										<a href="#" class="slide-hero" aria-label="лінк до сторінки">
+										<a href="incoming.html" class="slide-hero" aria-label="лінк до сторінки">
 											<p class="slide-hero__txt">
 												Вхідні дзвінки
 											</p>
 										</a>
 									</div>
 									<div class="hero__slide swiper-slide">
-										<a href="#" class="slide-hero" aria-label="лінк до сторінки">
+										<a href="automated.html" class="slide-hero" aria-label="лінк до сторінки">
 											<p class="slide-hero__txt">
 												Автоматичний обдзвін
 											</p>
 										</a>
 									</div>
 									<div class="hero__slide swiper-slide">
-										<a href="#" class="slide-hero" aria-label="лінк до сторінки">
+										<a href="confirmation.html" class="slide-hero" aria-label="лінк до сторінки">
 											<p class="slide-hero__txt">
 												Підтвердження номеру
 											</p>
 										</a>
 									</div>
 									<div class="hero__slide swiper-slide">
-										<a href="#" class="slide-hero" aria-label="лінк до сторінки">
+										<a href="marketing.html" class="slide-hero" aria-label="лінк до сторінки">
 											<p class="slide-hero__txt">
 												Маркетинг
 											</p>
@@ -785,28 +785,8 @@
 						</div>
 					</div>
 				</section>
-				<section data-watch-threshold="0.9" data-watch data-watch-once class="questions padding-section">
-					<div class="questions__container">
-						<h2 class="questions__title txt-72">
-							<span class="title-second__wrapper">
-								залишилися <span class="txt-red">питання</span>?
-							</span>
-						</h2>
-						<p class="questions__sub-title split-words set-span">Залиште свій E-mail або номер телефону і наш менеджер зв’яжеться з вами протягом 15 хвилин!</p>
-						<div class="questions__buttons">
-							<div class="questions__btn-body">
-								<a href="#" data-popup="#popupTwo" class="questions__btn btn">
-									<span>зв’язатися по email</span>
-								</a>
-							</div>
-							<div class="questions__btn-body">
-								<a href="#" data-popup="#popupThree" class="questions__btn btn">
-									<span>замовити зворотній дзвінок</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</section>
+			
+				@@include('html/_hasquestions.htm',{})
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>

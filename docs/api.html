@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<title>Operator | API Calls</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<style>
+		body {
+			opacity: 0;
+		}
+	</style>
+	<link rel="stylesheet" href="css/style.min.css?_v=20250110221914">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- Header полностью новый -->
+		<header class="header">
+			<div class="header__container">
+				<a href="index.html" class="header__logo">
+					<img src="img/icons/logo.webp" width="100" height="23" alt="лого Національний оператор">
+				</a>
+				<div class="header__menu menu">
+					<nav class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item"><a href="index.html" class="menu__link split-words set-span" aria-label="лінк до сторінки">головна</a></li>
+							<li class="menu__item sub-menu">
+								<a href="#" class="menu__link split-words set-span" aria-label="лінк до сторінки">послуги</a>
+								<ul class="sub-menu__list">
+									<li class="sub-menu__item">
+										<a href="api.html" class="sub-menu__link split-words set-span" aria-label="лінк до сторінки">Дзвінки по API</a>
+									</li>
+									<li class="sub-menu__item">
+										<a href="incoming.html" class="sub-menu__link split-words set-span" aria-label="лінк до сторінки">Вхідні дзвінки</a>
+									</li>
+									<li class="sub-menu__item">
+										<a href="automated.html" class="sub-menu__link split-words set-span" aria-label="лінк до сторінки">Автоматичний обдзвін</a>
+									</li>
+									<li class="sub-menu__item">
+										<a href="confirmation.html" class="sub-menu__link split-words set-span" aria-label="лінк до сторінки">Підтвердження номеру</a>
+									</li>
+									<li class="sub-menu__item">
+										<a href="marketing.html" class="sub-menu__link split-words set-span" aria-label="лінк до сторінки">Маркетинг</a>
+									</li>
+								</ul>
+							</li>
+							<li class="menu__item"><a href="" class="menu__link split-words set-span" aria-label="лінк до сторінки">тарифи та ціни</a></li>
+						</ul>
+						<div class="menu__block-mb">
+
+						</div>
+					</nav>
+					<div data-da=".menu__block-mb,992.98,0" class="menu__contacts contacts-menu">
+						<div class="contacts-menu__phones">
+							<a href="tel:+380507050705" class="contacts-menu__phone" aria-label="номер телефону">+380507050705</a>
+							<a href="tel:+380542705705" class="contacts-menu__phone" aria-label="номер телефону">+380542705705</a>
+						</div>
+						<a href="#" data-popup="#popupOne" class="contacts-menu__email" aria-label="відкриття форму">
+							<img src="img/icons/mail.svg" width="24" height="18" alt="Image">
+						</a>
+					</div>
+					<div class="menu__lng lng-menu">
+						<a href="#" class="lng-menu__link" aria-label="посилання на англомовну версію сайту">ENG</a>
+					</div>
+					<button type="buttton" class="menu__mode" aria-label="темна/світла теми сайту">
+						<img class="menu__mode-ic-light" src="img/icons/theme-light.svg" width="34" height="34" alt="Image">
+						<img class="menu__mode-ic-dark" src="img/icons/theme-dark.svg" width="34" height="34" alt="Image">
+					</button>
+					<a data-da=".menu__block-mb,992.98,1" href="#" class="menu__register btn-two" aria-label="реєстрація">зареєструватися</a>
+					<button type="button" class="menu__icon icon-menu" aria-label="відкриття меню"><span></span></button>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="srvs-hero hero-sects">
+				<div class="srvs-hero__bg">
+					<picture>
+						<source srcset="img/services_hero/srvs-01.webp" media="(min-width: 30.061em)" type="image/webp">
+						<source srcset="img/services_hero/srvs-01-mb.webp" type="image/webp">
+						<img class="srvs-hero__img" src="img/services_hero/srvs-01.webp" width="422" height="377" alt="image">
+					</picture>
+				</div>
+				<div class="srvs-hero__container">
+					<div class="srvs-hero__head">
+						<h1 class="srvs-hero__title title-hero split-words set-span">
+							Персональні <span class="clr-red">API-дзвінки</span> за гнучкими сценаріями та збором зворотного зв'язку
+						</h1>
+						<div class="srvs-hero__info">
+							<div class="srvs-hero__clmn">
+								<ul class="srvs-hero__list">
+									<li>
+										Підключіть Звонок до вашої IT-системи за допомогою API і позбавтеся ручних дзвінків-повідомлень.
+									</li>
+								</ul>
+							</div>
+							<div class="srvs-hero__clmn">
+								<ul class="srvs-hero__list">
+									<li>
+										Здійснюйте персональні автоматичні дзвінки за гнучкими сценаріями.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="srvs-hero__footer">
+						<div class="srvs-hero__cards-a cards-a">
+							<div class="cards-a__slider swiper">
+								<ul class="cards-a__wrapper swiper-wrapper">
+									<li class="cards-a__slide swiper-slide">
+										<div class="slide-cards-a">
+											<p class="slide-cards-a__title">
+												Автодзвінки від колл-центру
+											</p>
+											<p class="slide-cards-a__txt">
+												Система предиктивного обдзвону для повноцінного навантаження операторів.
+											</p>
+										</div>
+									</li>
+									<li class="cards-a__slide swiper-slide">
+										<div class="slide-cards-a">
+											<p class="slide-cards-a__title">
+												Автодзвінки від колл-центру
+											</p>
+											<p class="slide-cards-a__txt">
+												Система предиктивного обдзвону для повноцінного навантаження операторів.
+											</p>
+										</div>
+									</li>
+									<li class="cards-a__slide swiper-slide">
+										<div class="slide-cards-a">
+											<p class="slide-cards-a__title">
+												Автодзвінки від колл-центру
+											</p>
+											<p class="slide-cards-a__txt">
+												Система предиктивного обдзвону для повноцінного навантаження операторів.
+											</p>
+										</div>
+									</li>
+									<li class="cards-a__slide swiper-slide">
+										<div class="slide-cards-a">
+											<p class="slide-cards-a__title">
+												Автодзвінки від колл-центру
+											</p>
+											<p class="slide-cards-a__txt">
+												Система предиктивного обдзвону для повноцінного навантаження операторів.
+											</p>
+										</div>
+									</li>
+									<li class="cards-a__slide swiper-slide">
+										<div class="slide-cards-a">
+											<p class="slide-cards-a__title">
+												Автодзвінки від колл-центру
+											</p>
+											<p class="slide-cards-a__txt">
+												Система предиктивного обдзвону для повноцінного навантаження операторів.
+											</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="scheme padding-section">
+				<div class="scheme__container">
+					<div class="scheme__head">
+						<h2 class="scheme__title title-second">
+							<span class="title-second__wrapper">
+								Проста інтеграція з багатьма можливостями
+							</span>
+						</h2>
+						<div class="scheme__head-r">
+							<p class="scheme__txt-dwnl">
+								Інструкція з налаштуваннями АРІ:
+							</p>
+							<a href="https://operator.com.ua/documentation" target="_blank" class="scheme__dwnl btn-two">
+								завантажити
+							</a>
+						</div>
+					</div>
+					<div class="scheme__body">
+
+					</div>
+					<ul data-watch-threshold="0.5" data-watch data-watch-once class="scheme__cards cards-scheme">
+						<li class="cards-scheme__item">
+							<p class="cards-scheme__title">
+								Інформація про дзвінки в одному місці
+							</p>
+							<p class="cards-scheme__txt">
+								Керуйте дзвінками з особистого кабінету або інтерфейсу вашої IT-системи.
+							</p>
+						</li>
+						<li class="cards-scheme__item">
+							<p class="cards-scheme__title">
+								Завантаження списку номерів двома способами
+							</p>
+							<p class="cards-scheme__txt">
+								Надавайте номери та параметри клієнта через API або завантажуйте вручну.
+							</p>
+						</li>
+						<li class="cards-scheme__item">
+							<p class="cards-scheme__title">
+								Відстеження подій через Webhook
+							</p>
+							<p class="cards-scheme__txt">
+								Налаштуйте автоматичну зміну статусів у вашій системі відразу після дзвінка.
+							</p>
+						</li>
+						<li class="cards-scheme__item">
+							<p class="cards-scheme__title">
+								Зручні звіти про кожен дзвінок
+							</p>
+							<p class="cards-scheme__txt">
+								Аналізуйте результати дзвінків і вивантажуйте дані в свою IT-систему.
+							</p>
+						</li>
+					</ul>
+					<ul data-watch-threshold="1" data-watch data-watch-once class="scheme__prices prices">
+						<li class="prices__item">
+							<p class="prices__numb split-words set-span">
+								0,42 грн
+							</p>
+							<p class="prices__txt split-words set-span">
+								хвилина вхідного дзвінка
+							</p>
+						</li>
+						<li class="prices__item">
+							<p class="prices__numb split-words set-span">
+								0,08 грн
+							</p>
+							<p class="prices__txt split-words set-span">
+								середня вартість дзвінка
+							</p>
+						</li>
+						<li class="prices__item">
+							<p class="prices__numb split-words set-span">
+								3 046 042
+							</p>
+							<p class="prices__txt split-words set-span">
+								двінків зробили за вчора
+							</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="lists padding-section">
+				<div class="lists__container">
+					<h2 class="lists__title title-second">
+						<span class="title-second__wrapper">
+							Запустіть API-дзвінки за 3 простих кроки
+						</span>
+					</h2>
+					<div data-watch-threshold="0.2" data-watch data-watch-once class="lists__body">
+						<ul class="lists__list spollers">
+							<li class="lists__item item-grid-1">
+								<div class="lists__num txt-red">/01</div>
+								<div class="lists__subtitle">Підготовка</div>
+								<div class="lists__txt txt-norm">Додайте списки номерів вручну або інтегруйте сервіс з вашою IT-системою по API</div>
+								<div class="lists__num num-last txt-red">\</div>
+							</li>
+							<li class="lists__item item-grid-1">
+								<div class="lists__num txt-red">/02</div>
+								<div class="lists__subtitle">налаштування</div>
+								<div class="lists__txt txt-norm">Вкажіть, які параметри враховувати під час дзвінків та налаштуйте сценарії розмов</div>
+								<div class="lists__num num-last txt-red">\</div>
+							</li>
+							<li class="lists__item item-grid-1">
+								<div class="lists__num txt-red">/03</div>
+								<div class="lists__subtitle">запуск</div>
+								<div class="lists__txt txt-norm">Запустіть API-дзвінки і звільніться від рутини</div>
+								<div class="lists__num num-last txt-red">\</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="seconds padding-section">
+				<div class="seconds__container">
+					<h2 class="seconds__title title-second">
+						<span class="title-second__wrapper">
+							кожна секунда має значення!
+						</span>
+					</h2>
+					<div class="seconds__body">
+						<ul data-watch-threshold="0.2" data-watch data-watch-once class="seconds__list">
+							<li class="seconds__item">
+								<div class="seconds__ic">
+									<img src="img/icons/circles-1.svg" width="34" height="34" alt="Image">
+								</div>
+								<div class="seconds__txt split-words set-span">
+									Посекундна<br> тарифікація
+								</div>
+							</li>
+							<li class="seconds__item">
+								<div class="seconds__ic">
+									<img src="img/icons/circles-2.svg" width="34" height="34" alt="Image">
+								</div>
+								<div class="seconds__txt split-words set-span">
+									Фільтр автовідповідачів
+									для економії
+								</div>
+							</li>
+							<li class="seconds__item">
+								<div class="seconds__ic">
+									<img src="img/icons/circles-3.svg" width="34" height="34" alt="Image">
+								</div>
+								<div class="seconds__txt split-words set-span">
+									Понад 10 000 дзвінків одночасно
+								</div>
+							</li>
+							<li class="seconds__item">
+								<div class="seconds__ic">
+									<img src="img/icons/circles-4.svg" width="34" height="34" alt="Image">
+								</div>
+								<div class="seconds__txt split-words set-span">
+									Запис дзвінків за 1 рік
+								</div>
+							</li>
+							<li class="seconds__item">
+								<div class="seconds__ic">
+									<img src="img/icons/circles-5.svg" width="34" height="34" alt="Image">
+								</div>
+								<div class="seconds__txt split-words set-span">
+									Оперативна<br> техпідтримка
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="faq padding-section">
+				<div class="faq__container">
+					<h2 class="faq__title-main title-second">
+						<span class="title-second__wrapper">
+							питання та відповіді
+						</span>
+					</h2>
+					<div data-spollers data-watch-threshold="0.3" data-watch data-watch-once class="faq__spollers spollers-poss spollers">
+						<div class="wrapper-spoller-faq">
+							<details class="spollers__item">
+								<summary class="spollers__button">
+									<h3 class="spollers__title spollers-poss__title">
+										Чи можу я зв'язати сервіс зі своїм CRM/сервісом?
+									</h3>
+									<div class="spollers__close">
+										<img src="img/icons/colose-red.svg" width="23" height="23" alt="close">
+									</div>
+								</summary>
+								<div class="spollers__body">
+									<div class="spollers__txt-body">
+										<p class="spollers__txt-main txt-norm">
+											Так, сервіс підтримує інтеграцію з 1С, Bitrix24, amoCRM, є можливість завантаження Excel-таблиці з даними Ваших клієнтів. Ми працюємо над можливістю інтеграції і з іншими CRM-системами.
+										</p>
+									</div>
+								</div>
+							</details>
+						</div>
+						<div class="wrapper-spoller-faq">
+							<details class="spollers__item">
+								<summary class="spollers__button">
+									<h3 class="spollers__title spollers-poss__title">
+										Чи можу я масово додавати номери для здійснення дзвінка?
+									</h3>
+									<div class="spollers__close">
+										<img src="img/icons/colose-red.svg" width="23" height="23" alt="close">
+									</div>
+								</summary>
+								<div class="spollers__body">
+									<div class="spollers__txt-body">
+										<p class="spollers__txt-main txt-norm">
+											Так, номери та індивідуальні параметри клієнтів у будь-яких обсягах можна передавати через API із вашої CRM-системи.
+										</p>
+									</div>
+								</div>
+							</details>
+						</div>
+						<div class="wrapper-spoller-faq">
+							<details class="spollers__item">
+								<summary class="spollers__button">
+									<h3 class="spollers__title spollers-poss__title">
+										Чи можу я синтезувати текст через API?
+									</h3>
+									<div class="spollers__close">
+										<img src="img/icons/colose-red.svg" width="23" height="23" alt="close">
+									</div>
+								</summary>
+								<div class="spollers__body">
+									<div class="spollers__txt-body">
+										<p class="spollers__txt-main txt-norm">
+											Так, на етапі налаштування сценарію дзвінка Ви можете записати свій аудіоролик у браузері, замовити озвучку нашим диктором, завантажити свій аудіоролик. Крім того, наш робот може синтезувати текст.
+										</p>
+									</div>
+								</div>
+							</details>
+						</div>
+						<div class="wrapper-spoller-faq">
+							<details class="spollers__item">
+								<summary class="spollers__button">
+									<h3 class="spollers__title spollers-poss__title">
+										Чи можете Ви допомогти мені з налаштуванням?
+									</h3>
+									<div class="spollers__close">
+										<img src="img/icons/colose-red.svg" width="23" height="23" alt="close">
+									</div>
+								</summary>
+								<div class="spollers__body">
+									<div class="spollers__txt-body">
+										<p class="spollers__txt-main txt-norm">
+											На нашому сайті є докладний посібник з налаштування сервісу. Якщо Ви не знайшли там відповіді на запитання, що Вас цікавлять – задайте їх нашій техпідтримці, звернувшись за номером: +380 (44) 333-09-75.
+										</p>
+									</div>
+								</div>
+							</details>
+						</div>
+
+
+					</div>
+				</div>
+			</section>
+			<section class="more-servs padding-section">
+				<div class="more-servs__container">
+					<h2 class="more-servs__title-main title-second">
+						<span class="title-second__wrapper">
+							МИ вміємо набагато більше!
+						</span>
+					</h2>
+					<div class="more-servs__body">
+						<div class="more-servs__slider swiper">
+							<ul data-watch-threshold="0.5" data-watch data-watch-once class="more-servs__wrapper swiper-wrapper">
+								<li class="more-servs__slide swiper-slide">
+									<a href="api.html" class="slide-more" aria-label="лінк на сторінку послуги">
+										<div class="slide-more__title">
+											Дзвінки по API
+										</div>
+										<div class="slide-more__txt">
+											Персональні голосові повідомлення для клієнтів з важливою інформацією. Робот поставить потрібні запитання, розпізнає відповіді і підтягне їх у звіт.
+										</div>
+									</a>
+								</li>
+								<li class="more-servs__slide swiper-slide">
+									<a href="incoming.html" class="slide-more" aria-label="лінк на сторінку послуги">
+										<div class="slide-more__title">
+											Вхідні дзвінки
+										</div>
+										<div class="slide-more__txt">
+											Робот для вхідних дзвінків. Поставить початкові запитання, відсіче нецільові дзвінки і розподілить їх на потрібні відділи.
+										</div>
+									</a>
+								</li>
+								<li class="more-servs__slide swiper-slide">
+									<a href="automated.html" class="slide-more" aria-label="лінк на сторінку послуги">
+										<div class="slide-more__title">
+											Автоматичний обдзвін
+										</div>
+										<div class="slide-more__txt">
+											Персональні голосові повідомлення для клієнтів з важливою інформацією. Робот поставить потрібні запитання, розпізнає відповіді підтягне їх у звіт.
+										</div>
+									</a>
+								</li>
+								<li class="more-servs__slide swiper-slide">
+									<a href="confirmation.html" class="slide-more" aria-label="лінк на сторінку послуги">
+										<div class="slide-more__title">
+											Підтвердження номеру
+										</div>
+										<div class="slide-more__txt">
+											Підтвердження номера клієнта для сайту або додатку.
+										</div>
+									</a>
+								</li>
+								<li class="more-servs__slide swiper-slide">
+									<a href="marketing.html" class="slide-more" aria-label="лінк на сторінку послуги">
+										<div class="slide-more__title">
+											Маркетинг
+										</div>
+										<div class="slide-more__txt">
+											Робимо ваш бренд (компанію) впізнаваним в соціальних мережах.
+											Комплесні послуги для привернення цільового трафіку
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section data-watch-threshold="0.9" data-watch data-watch-once class="questions padding-section">
+				<div class="questions__container">
+					<h2 class="questions__title txt-72">
+						<span class="title-second__wrapper">
+							залишилися <span class="txt-red">питання</span>?
+						</span>
+					</h2>
+					<p class="questions__sub-title split-words set-span">Залиште свій E-mail або номер телефону і наш менеджер зв’яжеться з вами протягом 15 хвилин!</p>
+					<div class="questions__buttons">
+						<div class="questions__btn-body">
+							<a href="#" data-popup="#popupTwo" class="questions__btn btn">
+								<span>зв’язатися по email</span>
+							</a>
+						</div>
+						<div class="questions__btn-body">
+							<a href="#" data-popup="#popupThree" class="questions__btn btn">
+								<span>замовити зворотній дзвінок</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer data-watch-threshold="0.3" data-watch data-watch-once class="footer">
+			<div class="footer__container">
+				<div class="footer__head">
+					<div class="footer__logo">
+						<img src="img/icons/logo.webp" alt="logog">
+					</div>
+					<div class="footer__block">
+						<address class="footer__address">
+							<p class="footer__title txt-norm ">Адреси представництв</p>
+							<ul class="footer__list">
+								<li class="footer__item">м. Львів, вул. Шевченка 111-А. </li>
+								<li class="footer__item">Полтава, вул. Котляревського 1/27.</li>
+								<li class="footer__item">Суми, Майдан Незалежності 3</li>
+							</ul>
+						</address>
+						<address class="footer__address">
+							<p class="footer__title txt-norm ">Контакти</p>
+							<ul class="footer__list">
+								<li class="footer__item">
+									<a href="mailto:sales@operator.com.ua" class="footer__link">email: sales@operator.com.ua</a>
+								</li>
+								<li class="footer__item">
+									<a href="tel:+380507050705" class="footer__link">+38 (050) 705 07 05</a>
+								</li>
+								<li class="footer__item">
+									<a href="tel:+380542705705" class="footer__link">+38 (0542) 705 705</a>
+								</li>
+							</ul>
+						</address>
+					</div>
+					<div class="footer__name">
+						<p class="footer__name-txt txt-norm">ТОВ "НАЦІОНАЛЬНИЙ ОПЕРАТОР"<br> ЄДРПОУ 43613087</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="footer__bottom">
+				<div class="footer__container">
+					<p class="footer__copy">
+						© Copyright 2020 - 2025 ТОВ "НАЦІОНАЛЬНИЙ ОПЕРАТОР". Всі права захищені.
+					</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<div id="popupOne" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="кнопка закриття">
+					<img src="img/icons/close.svg" width="42" height="42" alt="close">
+				</button>
+				<p class="popup__title">послуги <span>колл-центру</span> в україні</p>
+				<p class="popup__txt">Залиште свій E-mail і наш менеджер зв’яжеться з вами протягом 15 хвилин!</p>
+				<form id="getConsul" name="Consultanion" data-dev data-popup-message="#popupMessage" action="" method="POST">
+					<div class="form__block form__block_mail">
+						<input type="text" name="form[email]" data-required="email" data-validate data-error="Заповніть поле" placeholder="E-mail" class="input input__email">
+						<!-- <input type="hidden" id="recaptcha-resp1" name="g-recaptcha-response"> -->
+						<button type="submit" class="form__button form__button_email">
+							<img src="img/icons/arrow.svg" width="23" height="16" alt="arrow">
+						</button>
+					</div>
+				</form>
+				<img class="popup__bg" src="img/icons/logo-big.webp" width="257" height="241" alt="logo">
+			</div>
+		</div>
+	</div>
+
+	<div id="popupTwo" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="кнопка закриття">
+					<img src="img/icons/close.svg" width="42" height="42" alt="close">
+				</button>
+				<p class="popup__title">залишилися <span>питання</span>?</p>
+				<p class="popup__txt">Залиште свій E-mail і наш менеджер зв’яжеться з вами протягом 15 хвилин!</p>
+				<form id="isQuestions" name="Questions" data-dev data-popup-message="#popupMessage" action="" method="POST">
+					<div class="form__block form__block_mail">
+						<input type="text" name="form[email]" data-required="email" data-validate data-error="Заповніть поле" placeholder="E-mail" class="input input__email">
+						<!-- <input type="hidden" id="recaptcha-resp2" name="g-recaptcha-response"> -->
+						<button type="submit" class="form__button form__button_email">
+							<img src="img/icons/arrow.svg" width="23" height="16" alt="arrow">
+						</button>
+					</div>
+				</form>
+				<img class="popup__bg" src="img/icons/logo-big.webp" width="257" height="241" alt="logo">
+			</div>
+		</div>
+	</div>
+
+	<div id="popupThree" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="кнопка закриття">
+					<img src="img/icons/close.svg" width="42" height="42" alt="close">
+				</button>
+				<p class="popup__title">залишилися <span>питання</span>?</p>
+				<p class="popup__txt">Залиште свій номер телефону і наш менеджер зв’яжеться з вами протягом 15 хвилин!</p>
+				<form id="getConsulTwo" name="Consultanion" data-dev data-popup-message="#popupMessage" action="" method="POST">
+					<div class="form__block form__block_phone">
+						<input type="tel" name="tel" data-inputmask="'mask': '+38 (099) 999 99 99'" name="form[phone]" data-validate data-required data-error="Заповніть поле" placeholder="Номер телефону" class="input input__phone">
+						<!-- <input type="hidden" id="recaptcha-resp3" name="g-recaptcha-response"> -->
+						<button type="submit" class="form__button form__button_phone">
+							<img src="img/icons/arrow.svg" width="23" height="16" alt="arrow">
+						</button>
+					</div>
+				</form>
+				<img class="popup__bg" src="img/icons/logo-big.webp" width="257" height="241" alt="logo">
+			</div>
+		</div>
+	</div>
+
+	<div id="popupMessage" class="popup popup-close">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="кнопка закриття">
+					<img src="img/icons/close.svg" width="42" height="42" alt="close">
+				</button>
+				<p class="popup__title">дякуємо за <span>звернення</span>!</p>
+				<p class="popup__txt">Наш менеджер звяжеться з вами в найкоротший термін.</p>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/app.min.js?_v=20250110221914"></script>
+</body>
+
+</html>
