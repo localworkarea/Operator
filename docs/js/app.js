@@ -8140,6 +8140,22 @@
                 },
                 on: {}
             });
+            if (document.querySelector(".any-number__slider")) new Swiper(".any-number__slider", {
+                modules: [ Navigation ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: "auto",
+                speed: 500,
+                breakpoints: {
+                    300: {
+                        spaceBetween: 10
+                    },
+                    768: {
+                        spaceBetween: 20
+                    }
+                },
+                on: {}
+            });
         }
         window.addEventListener("load", (function(e) {
             initSliders();
@@ -9157,8 +9173,9 @@
                     wrapper.style.setProperty("--index", index);
                 }));
             }));
-            const selectOptions = document.querySelector(".select__options");
-            if (selectOptions) {
+            const priceSelect = document.querySelector(".price__select");
+            if (priceSelect) {
+                const selectOptions = document.querySelector(".select__options");
                 const priceValues = document.querySelectorAll(".price__value");
                 const priceTxtChngOnes = document.querySelectorAll(".price__txt-chng-one");
                 let selectedIndex = -1;

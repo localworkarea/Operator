@@ -328,9 +328,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   // == SELECT (PRICE SECTION) ========================
-  const selectOptions = document.querySelector('.select__options');
+  const priceSelect = document.querySelector('.price__select');
   
-  if (selectOptions) {
+  if (priceSelect) {
+    const selectOptions = document.querySelector('.select__options');
     const priceValues = document.querySelectorAll('.price__value');
     const priceTxtChngOnes = document.querySelectorAll('.price__txt-chng-one');
 

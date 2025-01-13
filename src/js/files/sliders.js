@@ -150,6 +150,28 @@ function initSliders() {
 			}
 		});
 	}
+	if (document.querySelector('.any-number__slider')) { 
+		new Swiper('.any-number__slider', { 
+			modules: [Navigation],
+			observer: true,
+			observeParents: true,
+			slidesPerView: "auto",
+			speed: 500,
+
+			breakpoints: {
+				300: {
+					spaceBetween: 10,
+				},
+				768: {
+					spaceBetween: 20,
+				},
+			},
+			// Події
+			on: {
+
+			}
+		});
+	}
 	// if (document.querySelector('.swiper')) { 
 	// 	new Swiper('.swiper', { 
 	// 		modules: [Navigation],
