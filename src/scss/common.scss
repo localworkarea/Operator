@@ -191,6 +191,14 @@ html.light body {
     border-color: rgb(28, 28, 28, 0.75);
   }
 }
+%borderColor-RED-B8 {
+  .dark & {
+    border-color: $red;
+  }
+  .light & {
+    border-color: $mainColor;
+  }
+}
 
 
 // == BACKGROUND COLOR =====================
