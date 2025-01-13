@@ -2213,7 +2213,7 @@
           right: toRem(-1.5);
           transform: rotate(180deg) translate(0,50%);
           @media (max-width:$mobileSmall){
-             top: toRem(-0.5); 
+             top: toRem(-1); 
           }
         }
         &::after {
@@ -2221,7 +2221,7 @@
           left: toRem(-1.5);
           transform: translate(0,50%);
           @media (max-width:$mobileSmall){
-             bottom: toRem(-0.5); 
+             bottom: toRem(-1); 
           }
         }
       }
@@ -2260,7 +2260,7 @@
             transform: rotate(90deg) translate(-50%,50%);
           }
           @media (max-width: toEm(700.98)){
-            bottom: toRem(-1.5);
+            bottom: toRem(-0.5);
             right: toRem(-1.5);            
             transform: rotate(180deg) translate(0%,-50%);
           }

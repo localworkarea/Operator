@@ -5064,7 +5064,7 @@ body::after {
 }
 @media(max-width:30.06125em) {
   .one-scheme__arrows.arrows_01 span::before {
-    top: -.03125rem
+    top: -.0625rem
   }
 }
 .one-scheme__arrows.arrows_01 span::after {
@@ -5075,7 +5075,7 @@ body::after {
 }
 @media(max-width:30.06125em) {
   .one-scheme__arrows.arrows_01 span::after {
-    bottom: -.03125rem
+    bottom: -.0625rem
   }
 }
 .one-scheme__arrows.arrows_02 span,
@@ -5124,7 +5124,7 @@ body::after {
 }
 @media(max-width:43.81125em) {
   .one-scheme__arrows.arrows_02 span::before {
-    bottom: -.09375rem;
+    bottom: -.03125rem;
     right: -.09375rem;
     -webkit-transform: rotate(180deg) translate(0,-50%);
     transform: rotate(180deg) translate(0,-50%)
