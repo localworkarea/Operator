@@ -1,3 +1,15 @@
+// == filters ======================
+
+// --- #ffffff ---
+//    filter: invert(100%) sepia(3%) saturate(14%) hue-rotate(129deg) brightness(104%) contrast(100%);
+
+// --- #595959 ---
+//     filter: invert(34%) sepia(0%) saturate(372%) hue-rotate(193deg) brightness(93%) contrast(84%);
+
+
+// == #1C1C1C ---
+//     filter: invert(0%) sepia(24%) saturate(1089%) hue-rotate(353deg) brightness(85%) contrast(78%);
+
 body {
   background-color: $gray-1C1C1C;
 	color: $mainColor;
