@@ -9309,6 +9309,35 @@
                 });
                 handleHiddenAttributeChange();
             }
+            const selects = document.querySelectorAll(".slide-number__select select");
+            if (selects.length > 0) selects.forEach((select => {
+                const customOptions = select.closest(".select").querySelectorAll(".select__option");
+                const parentBody = select.closest(".slide-number").querySelector(".slide-number__body");
+                customOptions.forEach((option => {
+                    option.addEventListener("click", (function() {
+                        const value = this.dataset.value;
+                        const selectedOption = [ ...select.options ].find((opt => opt.value === value));
+                        if (selectedOption) {
+                            select.value = value;
+                            const dataNumber = selectedOption.dataset.number;
+                            if (parentBody) {
+                                parentBody.classList.remove("_has", "_has-not");
+                                parentBody.classList.forEach((className => {
+                                    if (className.startsWith("_value-")) parentBody.classList.remove(className);
+                                }));
+                                if (value && !value.includes(" ")) parentBody.classList.add(`_value-${value}`);
+                                if (dataNumber === "has") {
+                                    parentBody.classList.add("_has");
+                                    parentBody.classList.remove("_empty");
+                                } else if (dataNumber === "hasNot") {
+                                    parentBody.classList.add("_has-not");
+                                    parentBody.classList.remove("_empty");
+                                } else parentBody.classList.add("_empty");
+                            }
+                        }
+                    }));
+                }));
+            }));
             let lastWidth = window.innerWidth;
             const resizeObserver = new ResizeObserver((entries => {
                 requestAnimationFrame((() => {

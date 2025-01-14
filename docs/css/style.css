@@ -6827,6 +6827,30 @@ body::after {
     font-size: 1.125rem
   }
 }
+.slide-number__body._has .slide-number__no-one {
+  display: none
+}
+.slide-number__body._has .slide-number__has {
+  display: block
+}
+.slide-number__body._has-not .slide-number__no-one {
+  display: block
+}
+.slide-number__body._has-not .slide-number__has {
+  display: none
+}
+.slide-number__body._empty .slide-number__no-one {
+  display: none
+}
+.slide-number__body._empty .slide-number__has {
+  display: none
+}
+._has .slide-number__has {
+  display: block
+}
+._has-not .slide-number__has {
+  display: none
+}
 .block-b__list {
   display: grid;
   grid-auto-rows: 1fr

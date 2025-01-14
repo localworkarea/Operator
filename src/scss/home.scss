@@ -3100,7 +3100,44 @@
     color: $gray-59;
     line-height: 1.2;
     @include adaptiveValue("font-size", 22, 18,0,1920.98,480.98);
+    &._has  {
+      .slide-number__no-one {
+        display: none;
+      }
+      .slide-number__has {
+        display: block;
+      }
+    }
+    &._has-not  {
+      .slide-number__no-one {
+        display: block;
+      }
+      .slide-number__has {
+        display: none;
+      }
+    }
+    &._empty {
+      .slide-number__no-one {
+        display: none;
+      }
+      .slide-number__has {
+        display: none;
+      }
+
+    }
   }
+	// .slide-number__no-one
+	&__no-one {
+	}
+	// .slide-number__has
+	&__has {
+    ._has & {
+      display: block;
+    }
+    ._has-not & {
+      display: none;
+    }
+	}
   // .slide-number__txt
   &__txt {
   }
