@@ -66,6 +66,7 @@ textarea.input {
 			position: absolute;
 			right: toRem(100);
 			font-weight: 500;
+			pointer-events: none;
 			@media (min-width:$mobileSmall){
 				top: toRem(3px);
 			}

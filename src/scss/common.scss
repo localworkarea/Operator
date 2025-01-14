@@ -173,6 +173,14 @@ html.light body {
     color: $gray-59;
   }
 }
+%colorTheme5959-1C1C {
+  .dark & {
+    color: $gray-59;
+  }
+  .light & {
+    color: $gray-1C1C1C;
+  }
+}
 
 // == BORDER COLOR ====================
 %borderColor-FFF-1C1C {
@@ -181,6 +189,14 @@ html.light body {
   }
   .light & {
     border-color: $gray-1C1C1C;
+  }
+}
+%borderColor-FFF-B8 {
+  .dark & {
+    border-color: #fff;
+  }
+  .light & {
+    border-color: $mainColor;
   }
 }
 %borderColor-FFF-1C1C-075 {
@@ -232,6 +248,14 @@ html.light body {
   }
   .light & {
     background-color: $mainColor;
+  }
+}
+%backgroundColor-43-1C {
+  .dark & {
+    background-color: $gray-434343;
+  }
+  .light & {
+    background-color: $gray-1C1C1C;
   }
 }
 
