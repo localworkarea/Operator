@@ -2678,30 +2678,17 @@
             }
           }
           .lists-more__content {
-            &::before {
-              opacity: 0;
-            }
+          
+            -webkit-mask: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 0%);
+            mask: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 0%);
           }
         }
         // .lists-more__content
         &__content {
-          // padding-bottom: toRem(20);
-          transition: mask .3s ease;
-          position: relative;
-          &::before {
-            content:'';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-            -webkit-mask: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
-            mask: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
-            @extend %backgroundColor-1C1C-EE;
-            transition: background-color .3s ease, opacity .3s ease;
-          }
+          
+            -webkit-mask: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 50%);
+            mask: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 50%);
+        
           @media (min-width:$tablet){
             max-width: 66%;
           }
