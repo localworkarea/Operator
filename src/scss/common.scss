@@ -384,15 +384,15 @@ html.light body {
   }
 }
 
-.txt-big {
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -1.12px;
-  @include adaptiveValue("font-size", 32, 18);
-  span {
-    font-weight: 700;
-  }
-}
+// .txt-big {
+//   font-weight: 500;
+//   line-height: 1.2;
+//   letter-spacing: -1.12px;
+//   @include adaptiveValue("font-size", 32, 18);
+//   span {
+//     font-weight: 700;
+//   }
+// }
 .txt-sm {
   font-weight: 400;
   line-height: 1.2;
@@ -505,11 +505,17 @@ html.light body {
 }
 
 .hero-sects {
-  min-height: 100vh;
-  min-height: 100svh;
   display: flex;
   @include adaptiveValue("padding-top", 180, 100);
   @include adaptiveValue("padding-bottom", 100, 50);
+  @media(orientation: landscape) {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  @media (max-width:$mobileSmall){
+    min-height: 100vh;
+    min-height: 100svh;
+  }
 }
 
 
@@ -745,4 +751,267 @@ html.light body {
 // Тег
 ._select-tag {
 	cursor: pointer;
+}
+
+// == button to top to header ====================
+.to-top {
+  position: fixed;
+  bottom: toRem(20);
+  z-index: 20;
+  width: toRem(55);
+  height: toRem(55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 5px 4px 14px 0 rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, background-color .3s ease;
+  &._active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  @media (any-hover: hover){
+    &:hover{
+      .dark & {
+        background-color: rgb(184, 184, 184, 1);
+      }
+      .light & {
+        background-color: rgb(28, 28, 28, 1);
+      }
+    }
+  }
+  .dark & {
+    background-color: rgb(184, 184, 184, 0.2);
+  }
+  .light & {
+    background-color: rgb(28, 28, 28, 0.3);
+  }
+  @media (min-width:toEm(1350.98)){
+    right: toRem(10);
+  }
+  @media (max-width: toEm(1350.98)){
+    left: toRem(10);
+  }
+}
+
+
+
+// == contacts panel ============================
+.phone-page {
+  position: fixed;
+  z-index: 14;
+  z-index: 10;
+  right: 0;
+  width: 100%;
+  pointer-events: none;
+  @media (min-width:toEm(1350.98)){
+    bottom: toRem(50);
+  }
+  @media (max-width: toEm(1350.98)){
+      bottom: toRem(20);
+  }
+  // .phone-page__container
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+    @media (max-width:$mobileSmall){
+      padding-right: toRem(24); 
+    }
+  }
+  // .phone-page__wrapper
+  &__wrapper {
+    position: relative;
+  }
+// .phone-page__link
+&__link {
+  pointer-events: all;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: -3px -5px 0px 0px #E31E24 inset;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  flex: 0 0 auto;
+  width: toRem(90);
+  height: toRem(90);
+  
+  .dark & {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  .light & {
+    background-color: rgba(0, 0, 0, 0.35);
+  }
+
+  // @include adaptiveValue("width", 90, 60);
+  // @include adaptiveValue("height", 90, 60);
+
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(.4,0,.2,1);
+  
+  @media (max-width:$mobileSmall){
+    width: toRem(60);
+    height: toRem(60);
+  }
+
+  .loaded & {
+    opacity: 1;
+    transition-delay: 1.9s;
+  }
+
+  img {
+    width: toRem(36);
+    // @include adaptiveValue("width", 36, 24);
+    height: auto;
+    @media (max-width:$mobileSmall){
+      width: toRem(24);
+    }
+  }
+  &:hover {
+    .contacts-phone {
+      opacity: 1;
+      pointer-events: all;
+      bottom: 80px;
+      @media (max-width:$mobileSmall){
+         bottom: 40px; 
+      }
+      @media (max-height: toEm(580.98)){
+        bottom: 0;
+      }
+    }
+    .contacts-phone__link {
+      pointer-events: all;
+    }
+  }
+}
+// .phone-page__contacts
+&__contacts {
+}
+}
+
+.contacts-phone {
+  position: absolute;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  cursor: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  padding-bottom: toRem(45);
+  transition: opacity .6s ease, bottom .6s ease;
+
+  @media (max-height: toEm(650.98)) and (min-width: toEm(480.98)){
+    top: 10%;
+    transform: translateX(0); 
+    left: unset;
+    right: 135%;
+    padding-bottom: 0;
+  }
+
+	// .contacts-phone__body
+	&__body {
+    position: relative;
+    padding: toRem(21) toRem(27) toRem(23);
+    border-radius: toRem(15);
+    background-color: rgba(67, 67, 67, 0.75);
+    @media (max-width: toEm(1800.98)){
+      padding: toRem(16) toRem(20);
+    }
+	}
+  // .contacts-phone__triangle
+  &__triangle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: toRem(-25);
+    @media (max-width:$mobileSmall){
+      bottom: toRem(-17);
+    }
+    @media (max-height: toEm(650.98)) and (min-width: toEm(480.98)){
+      left: unset;
+      right: -51px;
+      top: 50%;
+      transform: translateX(0) translateY(-50%) rotate(-90deg);
+    }
+  }
+  // .contacts-phone__list
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(25);
+    @media (max-width:$mobileSmall){
+       row-gap: toRem(16); 
+    }
+    @media (max-height: toEm(650.98))  and (min-width: toEm(480.98)){
+      flex-direction: row;
+      gap: toRem(16);
+    }
+  }
+  // .contacts-phone__item
+  &__item {
+  }
+  // .contacts-phone__link
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    width: toRem(48);
+    height: toRem(48);
+    
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: -1px -3px 0px 0px #E31E24 inset;
+    transition: all .3s;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+
+    img {
+      height: auto;   
+    }
+    
+    &.phone-link {
+      img {
+        width: toRem(25);
+      }
+    }
+    
+    &.viber-link {
+     img {
+      width: toRem(27);
+      }
+    }
+    
+    &.teleg-link {
+      img {
+        width: toRem(24);
+      }
+    }
+    
+    &.face-link {
+      img {
+        width: toRem(15);
+      }
+    }
+    
+    &.insta-link {
+      img {
+        width: toRem(27);
+      }
+    }
+    
+    &.mail-link {
+      img {
+        width: toRem(27);
+      }
+    }
+
+  }
 }

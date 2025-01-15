@@ -26,28 +26,78 @@ import "../../scss/base/swiper.scss";
 
 // Ініціалізація слайдерів
 function initSliders() {
-	if (document.querySelector('.hero__slider')) { 
-		new Swiper('.hero__slider', { 
-			modules: [Navigation],
-			observer: true,
-			observeParents: true,
-			slidesPerView: "auto",
-			speed: 500,
+	// if (document.querySelector('.hero__slider')) { 
+	// 	new Swiper('.hero__slider', { 
+	// 		modules: [Navigation],
+	// 		observer: true,
+	// 		observeParents: true,
+	// 		slidesPerView: "auto",
+	// 		speed: 500,
 
-			breakpoints: {
-				300: {
-					spaceBetween: 10,
-				},
-				480: {
-					spaceBetween: 20,
-				},
-			},
-			// Події
-			on: {
+	// 		breakpoints: {
+	// 			300: {
+	// 				spaceBetween: 10,
+	// 			},
+	// 			480: {
+	// 				spaceBetween: 20,
+	// 			},
+	// 		},
+	// 		// Події
+	// 		on: {
 
+	// 		}
+	// 	});
+	// }
+
+	let heroSliderInstance;
+
+	function setupHeroSlider() {
+			const mediaQuery = window.matchMedia("(min-width: 30.061em)"); // Проверяем ширину экрана
+			const heroSliderElement = document.querySelector('.hero__slider');
+
+			if (!heroSliderElement) return;
+
+			if (mediaQuery.matches) {
+					// Если ширина экрана >= 30.061em
+					if (!heroSliderInstance) {
+							heroSliderInstance = new Swiper('.hero__slider', {
+									modules: [Navigation],
+									observer: true,
+									observeParents: true,
+									slidesPerView: "auto",
+									speed: 500,
+									breakpoints: {
+											300: {
+													spaceBetween: 10,
+											},
+											480: {
+													spaceBetween: 20,
+											},
+									},
+							});
+					}
+			} else {
+					// Если ширина экрана < 30.061em
+					if (heroSliderInstance) {
+							heroSliderInstance.destroy(true, true);
+							heroSliderInstance = null;
+
+							// Удаляем классы swiper для возврата к обычным блокам
+							heroSliderElement.classList.remove('swiper-initialized', 'swiper-horizontal');
+							const slides = heroSliderElement.querySelectorAll('.swiper-slide');
+							slides.forEach(slide => {
+									slide.style.width = '';
+							});
+					}
 			}
-		});
 	}
+
+	// Запуск на загрузке
+	setupHeroSlider();
+
+	// Перезапуск при изменении размера экрана
+	window.addEventListener('resize', setupHeroSlider);
+
 	if (document.querySelector('.cases__slider')) { 
 		new Swiper('.cases__slider', { 
 			modules: [Navigation],

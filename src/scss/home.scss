@@ -24,6 +24,12 @@
   }
   // .hero__wrapper
   &__wrapper {
+    &.swiper-wrapper {
+      @media (max-width:$mobileSmall){
+         flex-direction: column; 
+         row-gap: toRem(10);
+      }
+    }
   }
   // .hero__slide
   &__slide {
@@ -51,12 +57,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
       height: 100%;
-      aspect-ratio: 423/250;
       border-radius: toRem(15);
       transition: opacity .3s ease, background-color .3s ease;
-      @include adaptiveValue("width", 423, 300,0,1920.98,480.98);
-      @include adaptiveValue("padding", 50, 10);
+      @include adaptiveValue("width", 423, 300,2,1920.98,480.98);
+      @include adaptiveValue("padding", 50, 10,0,1920.98,480.98);
       @extend %backgroundColor-43-B8-075;
       @media (any-hover: hover){
         &:hover{
@@ -66,6 +72,17 @@
           }
         }
       }
+      @media (min-width:$mobileSmall){
+        aspect-ratio: 423/250;
+        &::before {
+          display: none;
+        }
+      }
+      @media (max-width:$mobileSmall){
+         min-height: toRem(80); 
+         position: relative;
+      }
+      @extend %arrowCardSliders;
       // .slide-hero__txt
       &__txt {
         font-family: "Benzin";
@@ -95,6 +112,33 @@
   }
 }
 
+%arrowCardSliders {
+  &:before {
+    content:'';
+    position: absolute;
+    @include adaptiveValue("bottom", 27, 12,0,1920.98,1440.98);
+    @include adaptiveValue("right", 25, 12,0,1920.98,1440.98);
+    background-image:url("../img/icons/arr-r-red.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+    aspect-ratio: 24/22;
+    @include adaptiveValue("width", 24, 18,0,1920.98,1440.98);
+    transition: transform .3s ease;
+  }
+  @media (any-hover: hover){
+    &:hover{
+      opacity: .7;
+      &::before {
+        transform: translateX(toRem(10));
+      }
+      .slide-more__title {
+        color: $red;
+      }
+    }
+  }
+}
+
 
 // == ABOUT SECTION ============================
 .about {
@@ -112,38 +156,16 @@
   }
   // .about__txt-big
   &__txt-big {
+    font-weight: 500;
+    letter-spacing: -1.12px;
+    line-height: 1.1;
+    @include adaptiveValue("font-size", 32, 18);
     @include adaptiveValue("margin-bottom", 50, 20);
-    .line {
+    @extend %animWatcherSplitSpan;
+    .word-span {
       opacity: 0;
-      transform: translateY(100%);
       ._watcher-view & {
         opacity: 1;
-        transform: translateY(0);
-        transition: transform 1s ease, opacity 1s ease;
-        &:nth-child(1) {
-          transition-delay: 0s;
-        }
-        &:nth-child(2) {
-          transition-delay: 0.1s;
-        }
-        &:nth-child(3) {
-          transition-delay: 0.2s;
-        }
-        &:nth-child(4) {
-          transition-delay: 0.3s;
-        }
-        &:nth-child(5) {
-          transition-delay: 0.4s;
-        }
-        &:nth-child(6) {
-          transition-delay: 0.5s;
-        }
-        &:nth-child(7) {
-          transition-delay: 0.6s;
-        }
-        &:nth-child(8) {
-          transition-delay: 0.7s;
-        }
       }
     }
   }
@@ -2960,30 +2982,7 @@
   @include adaptiveValue("padding-bottom", 60, 35,0,1920.98,1440.98);
   @include adaptiveValue("padding-inline", 48, 30,0,1920.98,1440.98);
   transition: opacity .3s ease;
-  &:before {
-    content:'';
-    position: absolute;
-    @include adaptiveValue("bottom", 27, 12,0,1920.98,1440.98);
-    @include adaptiveValue("right", 25, 12,0,1920.98,1440.98);
-    background-image:url("../img/icons/arr-r-red.svg");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: contain;
-    aspect-ratio: 24/22;
-    @include adaptiveValue("width", 24, 18,0,1920.98,1440.98);
-    transition: transform .3s ease;
-  }
-  @media (any-hover: hover){
-    &:hover{
-      opacity: .7;
-      &::before {
-        transform: translateX(toRem(10));
-      }
-      .slide-more__title {
-        color: $red;
-      }
-    }
-  }
+  @extend %arrowCardSliders;
   // .slide-more__title
   &__title {
     font-weight: 600;
@@ -3099,7 +3098,7 @@
   &__body {
     color: $gray-59;
     line-height: 1.2;
-    @include adaptiveValue("font-size", 22, 18,0,1920.98,480.98);
+    @include adaptiveValue("font-size", 22, 18,0,1920.98,481.98);
     &._has  {
       .slide-number__no-one {
         display: none;
@@ -3478,4 +3477,5 @@
     }
   }
 }
+
 

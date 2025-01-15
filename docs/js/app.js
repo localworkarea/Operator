@@ -8153,22 +8153,39 @@
             });
         }
         function initSliders() {
-            if (document.querySelector(".hero__slider")) new Swiper(".hero__slider", {
-                modules: [ Navigation ],
-                observer: true,
-                observeParents: true,
-                slidesPerView: "auto",
-                speed: 500,
-                breakpoints: {
-                    300: {
-                        spaceBetween: 10
-                    },
-                    480: {
-                        spaceBetween: 20
-                    }
-                },
-                on: {}
-            });
+            let heroSliderInstance;
+            function setupHeroSlider() {
+                const mediaQuery = window.matchMedia("(min-width: 30.061em)");
+                const heroSliderElement = document.querySelector(".hero__slider");
+                if (!heroSliderElement) return;
+                if (mediaQuery.matches) {
+                    if (!heroSliderInstance) heroSliderInstance = new Swiper(".hero__slider", {
+                        modules: [ Navigation ],
+                        observer: true,
+                        observeParents: true,
+                        slidesPerView: "auto",
+                        speed: 500,
+                        breakpoints: {
+                            300: {
+                                spaceBetween: 10
+                            },
+                            480: {
+                                spaceBetween: 20
+                            }
+                        }
+                    });
+                } else if (heroSliderInstance) {
+                    heroSliderInstance.destroy(true, true);
+                    heroSliderInstance = null;
+                    heroSliderElement.classList.remove("swiper-initialized", "swiper-horizontal");
+                    const slides = heroSliderElement.querySelectorAll(".swiper-slide");
+                    slides.forEach((slide => {
+                        slide.style.width = "";
+                    }));
+                }
+            }
+            setupHeroSlider();
+            window.addEventListener("resize", setupHeroSlider);
             if (document.querySelector(".cases__slider")) new Swiper(".cases__slider", {
                 modules: [ Navigation ],
                 observer: true,
@@ -8285,7 +8302,6 @@
             }
             scrollWatcherConstructor(items) {
                 if (items.length) {
-                    this.scrollWatcherLogging(`Прокинувся, стежу за об'єктами (${items.length})...`);
                     let uniqParams = uniqArray(Array.from(items).map((function(item) {
                         if (item.dataset.watch === "navigator" && !item.dataset.watchThreshold) {
                             let valueOfThreshold;
@@ -8313,16 +8329,13 @@
                         let configWatcher = this.getScrollWatcherConfig(paramsWatch);
                         this.scrollWatcherInit(groupItems, configWatcher);
                     }));
-                } else this.scrollWatcherLogging("Сплю, немає об'єктів для стеження. ZzzZZzz");
+                }
             }
             getScrollWatcherConfig(paramsWatch) {
                 let configWatcher = {};
-                if (document.querySelector(paramsWatch.root)) configWatcher.root = document.querySelector(paramsWatch.root); else if (paramsWatch.root !== "null") this.scrollWatcherLogging(`Эмм... батьківського об'єкта ${paramsWatch.root} немає на сторінці`);
+                if (document.querySelector(paramsWatch.root)) configWatcher.root = document.querySelector(paramsWatch.root); else if (paramsWatch.root !== "null") ;
                 configWatcher.rootMargin = paramsWatch.margin;
-                if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) {
-                    this.scrollWatcherLogging(`йой, налаштування data-watch-margin потрібно задавати в PX або %`);
-                    return;
-                }
+                if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) return;
                 if (paramsWatch.threshold === "prx") {
                     paramsWatch.threshold = [];
                     for (let i = 0; i <= 1; i += .005) paramsWatch.threshold.push(i);
@@ -8343,20 +8356,10 @@
                 items.forEach((item => this.observer.observe(item)));
             }
             scrollWatcherIntersecting(entry, targetElement) {
-                if (entry.isIntersecting) {
-                    !targetElement.classList.contains("_watcher-view") ? targetElement.classList.add("_watcher-view") : null;
-                    this.scrollWatcherLogging(`Я бачу ${targetElement.classList}, додав клас _watcher-view`);
-                } else {
-                    targetElement.classList.contains("_watcher-view") ? targetElement.classList.remove("_watcher-view") : null;
-                    this.scrollWatcherLogging(`Я не бачу ${targetElement.classList}, прибрав клас _watcher-view`);
-                }
+                if (entry.isIntersecting) !targetElement.classList.contains("_watcher-view") ? targetElement.classList.add("_watcher-view") : null; else targetElement.classList.contains("_watcher-view") ? targetElement.classList.remove("_watcher-view") : null;
             }
             scrollWatcherOff(targetElement, observer) {
                 observer.unobserve(targetElement);
-                this.scrollWatcherLogging(`Я перестав стежити за ${targetElement.classList}`);
-            }
-            scrollWatcherLogging(message) {
-                this.config.logging ? FLS(`[Спостерігач]: ${message}`) : null;
             }
             scrollWatcherCallback(entry, observer) {
                 const targetElement = entry.target;
@@ -9311,9 +9314,9 @@
             }
             const selects = document.querySelectorAll(".slide-number__select select");
             if (selects.length > 0) selects.forEach((select => {
-                const customOptions = select.closest(".select").querySelectorAll(".select__option");
+                const customOptionsS = select.closest(".select").querySelectorAll(".select__option");
                 const parentBody = select.closest(".slide-number").querySelector(".slide-number__body");
-                customOptions.forEach((option => {
+                customOptionsS.forEach((option => {
                     option.addEventListener("click", (function() {
                         const value = this.dataset.value;
                         const selectedOption = [ ...select.options ].find((opt => opt.value === value));
@@ -9338,6 +9341,23 @@
                     }));
                 }));
             }));
+            const scrollButton = document.querySelector(".to-top");
+            if (scrollButton) {
+                function scrollToTop() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                }
+                function handleScroll() {
+                    if (window.scrollY > 500) scrollButton.classList.add("_active"); else scrollButton.classList.remove("_active");
+                }
+                scrollButton.addEventListener("click", (event => {
+                    event.preventDefault();
+                    scrollToTop();
+                }));
+                window.addEventListener("scroll", handleScroll);
+            }
             let lastWidth = window.innerWidth;
             const resizeObserver = new ResizeObserver((entries => {
                 requestAnimationFrame((() => {

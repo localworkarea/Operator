@@ -375,10 +375,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (selects.length > 0) {
       selects.forEach(select => {
-          const customOptions = select.closest('.select').querySelectorAll('.select__option');
+          const customOptionsS = select.closest('.select').querySelectorAll('.select__option');
           const parentBody = select.closest('.slide-number').querySelector('.slide-number__body');
   
-          customOptions.forEach(option => {
+          customOptionsS.forEach(option => {
               option.addEventListener('click', function () {
                   const value = this.dataset.value;
                   const selectedOption = [...select.options].find(opt => opt.value === value);
@@ -414,12 +414,33 @@ document.addEventListener("DOMContentLoaded", function() {
           });
       });
   }
-  
-  
-  
-
-  
   // =============================================
+
+  const scrollButton = document.querySelector('.to-top');
+
+  if (scrollButton) {
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  
+    function handleScroll() {
+      if (window.scrollY > 500) {
+        scrollButton.classList.add('_active');
+      } else {
+        scrollButton.classList.remove('_active');
+      }
+    }
+  
+    scrollButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      scrollToTop();
+    });
+  
+    window.addEventListener('scroll', handleScroll);
+  }
 
 
   let lastWidth = window.innerWidth;

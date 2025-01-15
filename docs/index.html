@@ -10,7 +10,7 @@
 			opacity: 0;
 		}
 	</style>
-	<link rel="stylesheet" href="css/style.min.css?_v=20250114220333">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250115134831">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,7 +130,7 @@
 					</div>
 				</div>
 			</section>
-			<!-- About небольшие изменения
+			<!-- Небольшие изменения по первой странице:
 						Изменения в img - используется webp без picture 
 						добавлены атрибуты width height к img
 						добавлены aria-label к <a> <button>
@@ -144,8 +144,8 @@
 						</span>
 					</h2>
 					<div class="about__texts">
-						<!-- ИЗМЕНЕНИЯ: ДОБАВЛЕН КЛАСС split-lines -->
-						<p class="about__txt-big txt-big split-lines"><span>ТОВ “НАЦІОНАЛЬНИЙ ОПЕРАТОР”</span> - компанія, яка надає послуги аутсорс колл центру в Україні та за її межами, здійснює повний спектр послуг по спілкуванню з клієнтами та гарантує збільшення продажів.</p>
+						<!-- ИЗМЕНЕНИЯ: ДОБАВЛЕН КЛАСС split-words set-span, заменен <span> на <b> -->
+						<p class="about__txt-big split-words set-span"><b>ТОВ “НАЦІОНАЛЬНИЙ ОПЕРАТОР”</b> - компанія, яка надає послуги аутсорс колл центру в Україні та за її межами, здійснює повний спектр послуг по спілкуванню з клієнтами та гарантує збільшення продажів.</p>
 						<div class="about__txt-wrapper">
 							<p class="about__txt txt-sm">Ми допомагаємо розвантажити штатних працівників, зменшити час на обслуговування кожного клієнта та зекономити на витратах, пов'язаних з обладнанням робочих місць.</p>
 							<p class="about__txt txt-sm">Контактний центр надає послуги клієнтської підтримки на 11 мовах, що дозволяє розширити аудиторію та кратно збільшити продажі у вашому бізнесі</p>
@@ -878,6 +878,9 @@
 				</div>
 			</section>
 		</main>
+
+
+
 		<footer data-watch-threshold="0.3" data-watch data-watch-once class="footer">
 			<div class="footer__container">
 				<div class="footer__head">
@@ -922,6 +925,51 @@
 				</div>
 			</div>
 		</footer>
+	</div>
+
+	<a href="#" class="to-top" aria-label="button scroll to top">
+		<svg width="27" height="15" viewBox="0 0 27 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M11.8832 1.91329L24.652 14.682L26.248 13.0859L13.4793 0.317192L11.8832 1.91329Z" fill="#E31E24" />
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M15.1168 1.91524L2.34805 14.684L0.751953 13.0879L13.5207 0.319147L15.1168 1.91524Z" fill="#E31E24" />
+		</svg>
+	</a>
+	<div class="phone-page">
+		<div class="phone-page__container">
+			<div class="phone-page__wrapper">
+				<div class="phone-page__link">
+					<img src="img/icons/phone.svg" width="25" height="25" alt="phone">
+					<div class="phone-page__contacts contacts-phone">
+						<div class="contacts-phone__body">
+							<div class="contacts-phone__triangle">
+								<img src="img/icons/Polygon.svg" width="24" height="17" alt="triangle">
+							</div>
+							<ul class="contacts-phone__list">
+								<li class="contacts-phone__item">
+									<a href="#" data-popup="#popupThree" class="contacts-phone__link phone-link" aria-label="лінк на соцмережі">
+										<img src="img/icons/phone-2.svg" width="25" height="25" alt="phone">
+									</a>
+								</li>
+								<li class="contacts-phone__item">
+									<a href="#" class="contacts-phone__link viber-link" aria-label="лінк на соцмережі">
+										<img src="img/icons/viber.svg" width="25" height="25" alt="viber">
+									</a>
+								</li>
+								<li class="contacts-phone__item">
+									<a href="#" class="contacts-phone__link teleg-link" aria-label="лінк на соцмережі">
+										<img src="img/icons/telegram.svg" width="25" height="25" alt="telegram">
+									</a>
+								</li>
+								<li class="contacts-phone__item">
+									<a href="mailto:sales@call-center.com.ua" class="contacts-phone__link mail-link" aria-label="лінк на соцмережі">
+										<img src="img/icons/e-mail.svg" width="25" height="25" alt="e-mail">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div id="popupOne" class="popup">
 		<div class="popup__wrapper">
@@ -1001,7 +1049,7 @@
 		</div>
 	</div>
 
-	<script src="js/app.min.js?_v=20250114220333"></script>
+	<script src="js/app.min.js?_v=20250115134831"></script>
 </body>
 
 </html>
